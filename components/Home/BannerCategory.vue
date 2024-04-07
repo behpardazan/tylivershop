@@ -14,15 +14,41 @@
 
             {{ $t('shoppingByCategory') }}</strong>
             <div class="flex  mt-3 scrollbar-hide overflow-scroll h-[515px]  flex-col lg:flex-row lg:h-auto flex-wrap">
-                <div class="item h-[170px] w-[140px]  p-1 relative flex flex-col items-center justify-ecnter" 
-                v-for="item in 18">
-                    <img class="w-[120px] h-[120px] object-contain rounded" src="/img/cat1.jpg"  />
-                    <p class="text-sm mt-2">عنوان دسته بندی </p>
-                </div>
+                
+                    <div class="item h-[170px] w-[140px]  p-1 relative flex flex-col items-center justify-ecnter" 
+                    v-for="element in categoryStore?.data?.list[0]?.children">
+                    <!-- {{showImageBaseUrl+element?.picture?.url}} -->
+                        <img class="w-[120px] h-[120px] object-contain rounded" 
+                        :src="showImageBaseUrl+element?.picture?.url"  />
+                        <p class="text-sm text-center mt-2">{{element?.name}}   </p>
+                    </div>
+                    <div class="item h-[170px] w-[140px]  p-1 relative flex flex-col items-center justify-ecnter" 
+                    v-for="element in categoryStore?.data?.list[1]?.children">
+                    <!-- {{showImageBaseUrl+element?.picture?.url}} -->
+                        <img class="w-[120px] h-[120px] object-contain rounded" 
+                        :src="showImageBaseUrl+element?.picture?.url"  />
+                        <p class="text-sm text-center mt-2">{{element?.name}}   </p>
+                    </div>
+                    <div class="item h-[170px] w-[140px]  p-1 relative flex flex-col items-center justify-ecnter" 
+                    v-for="element in categoryStore?.data?.list[2]?.children">
+                    <!-- {{showImageBaseUrl+element?.picture?.url}} -->
+                        <img class="w-[120px] h-[120px] object-contain rounded" 
+                        :src="showImageBaseUrl+element?.picture?.url"  />
+                        <p class="text-sm text-center mt-2">{{element?.name}}   </p>
+                    </div>
             </div>
         </div>
     </section>
-
 </template>
 
 
+<script setup>
+const route = useRoute()
+const categoryStore = useCategory()
+const {public:{showImageBaseUrl}} = useRuntimeConfig();
+
+
+onMounted(async()=>{
+  await categoryStore.getCategory()   
+})
+</script>

@@ -1,7 +1,7 @@
 <template>
   <header class=" shadow  min-h-10 sticky top-0 z-90">
     <HeaderAds />
-    <div  v-if="isOpenDesktop==true"  class="cover bg-[#000000a1] z-10 h-[calc(100vh-152px)] min-w-[100vw] p-2 right-0 fixed top-[152px]"></div>
+    <div  v-if="isOpenDesktop==true"  class="cover bg-[#000000a1] z-10 h-[calc(100vh-152px)] min-w-[100vw] p-2 right-0 fixed top-[173px]"></div>
     <div class="container lg:flex-row-reverse flex items-center  p-1 ">
       <div @click="isOpen = true"
         class="menu lg:hidden w-[50px] min-w-[50px] flex justify-center items-center text-xl h-[50px]">
