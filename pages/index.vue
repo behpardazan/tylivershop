@@ -5,7 +5,7 @@
         <HomeCategory />
         <HomeAdsBanner />
         <HomeBannerCategory />
-        <HomeLatestProducts />
+        <HomePopularProducts />
         <HomeAdsBannerOne />
         <HomeLatestProducts />
         <HomeBrands />

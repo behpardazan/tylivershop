@@ -1,5 +1,5 @@
 <template>
-    <section class=" p-2 overflow-hidden">
+    <section class=" p-2 overflow-hidden  bg-gray-100">
         <div class="container">
             <strong class="flex items-center justify-start">
                 <svg width="23" height="23" class="me-2" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

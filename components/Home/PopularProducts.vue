@@ -1,6 +1,6 @@
 <template>
     <section class=" p-2 overflow-hidden">
-
+     <!-- {{ data}} -->
         <div class="container">
             <strong class="flex items-center justify-start">
                 <svg width="23" height="23" class="me-2" viewBox="0 0 23 23" fill="none"
@@ -15,7 +15,7 @@
                     </defs>
                 </svg>
 
-                {{ $t('latestProducts') }}</strong>
+                {{ $t('mostVisitedProduct') }}</strong>
 
                 <swiper
         :breakpoints="{
@@ -38,8 +38,8 @@
       <swiper-slide v-for="item in sliceData" class="text-center max-w-[250px] min-w-[250px] text-xs hover:bg-gray-100 p-1 py-2 rounded rounded-lg">
       <!-- {{ item }} -->
 
-      <productsProductItemTiny :index="index" :data="element" v-for="(element,index) in item" />
-       </swiper-slide>
+<productsProductItemTiny :index="index" :data="element" v-for="(element,index) in item" />
+    </swiper-slide>
 
     </swiper>
 
@@ -58,11 +58,12 @@ const productsStore = useProducts()
 const data = ref()
 const sliceData = ref([])
 onMounted(async() => {
-    data.value = await productsStore.getProducts(productsStore.lates)
+    data.value = await productsStore.getProducts(productsStore.popular)
     
     sliceData.value = splitData(data?.value?.list, 3)
     // console.log(await productsStore.getProducts(productsStore.popular));
 })
+
 const splitData = (myList, chunkSize) => {
     const groupedLists = [];
 
