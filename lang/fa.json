@@ -32,6 +32,27 @@
     "expensive": "گرانترین  ",
 
 
+    "authorize": "اعتبار سنجی  ",
+    "login": "ورود",
+    "loginMessage": "کاربر عزیز لطفاٌ شماره تماس خود را وارد کنید",
+    "mobilePlaceHolder": "شماره تماس خود را وارد کنید",
+    "getCode":"دریافت کد",
+    "code":" کد",
+    "submite":" ثبت",
+    "codeMessage":" کاربر عزیز لطفاٌ کد ارسالی را در کادر زیر وارد کنید",
+    "register": "ثبت نام",
+    "registerMessage": "کاربر عزیز لطفاٌ اطلاعات خود را جهت ثبت نام وارد کنید",
+    "email":"ایمیل",
+    "emailPlaceHolder": " ایمیل خود را وارد کنید",
+    "name":"نام",
+    "namePlaceHolder": "نام  خود را وارد کنید",
+    "password":"کلمه عبور",
+    "rePassword":"تکرار کلمه عبور",
+
+    
+
+
+
 
     "homePage": "صفحه اصلی ",
     "learnMore": "بیشتر بدانید",
@@ -55,7 +76,7 @@
 
     "fullName": "نام و نام خانوادگی",
     "mobileNumber": "شماره موبایل",
-    "email": "ایمیل",
+ 
     "subject": "موضوع",
     "text": "متن",
     "submitRrquest": "ثبت درخواست",

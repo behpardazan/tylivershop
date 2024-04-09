@@ -32,6 +32,22 @@
     "expensive": "expensive  ",
 
 
+    "authorize": "authorize",
+    "login": "login",
+    "loginMessage": "Dear user, please enter your contact number",
+    "mobilePlaceHolder": "please Enter Mobile number",
+    "getCode":"get code",
+    "code":"Code",
+    "submite":" submite",
+    "codeMessage":"Dear user, please enter the code sent",
+    "register": "register ",
+    "registerMessage": "Dear user, please enter your Information for register",
+    "email":"email",
+    "emailPlaceHolder": "please Enter  email",
+    "name":"name",
+    "namePlaceHolder": "please Enter Name",
+    "password":"password",
+    "rePassword":"re password",
 
 
     "homePage": "Home Page",
@@ -55,7 +71,6 @@
 
     "fullName": "Full Name",
     "mobileNumber": "Mobile Number",
-    "email": "Email",
     "subject": "Subject",
     "text": "Text",
     "submitRrquest": "Submit Rrquest",

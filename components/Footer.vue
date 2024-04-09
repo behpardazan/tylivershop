@@ -1,5 +1,5 @@
 <template>
-    <footer class="bg-yellow-500 min-h-[200px] w-full py-3 pb-[82px] lg:pb-0 relative">
+    <footer class="bg-yellow-500 min-h-[200px] mt-auto w-full py-3 pb-[82px] lg:pb-0 relative">
       <div class="container p-1 lg:flex lg:pb-4">
         <div>
           <div class="about text-sm text-justify p-1 ">

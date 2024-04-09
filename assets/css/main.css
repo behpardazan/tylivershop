@@ -67,3 +67,9 @@
 *{
     font-family: YekanBakh;
 }
+
+body > div#__nuxt{
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
