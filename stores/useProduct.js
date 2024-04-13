@@ -59,5 +59,30 @@ export const useProducts = defineStore("productsStore", {
                 console.log(error);
             }
         },
+        async getSearchedProducts(q) {
+            // console.log(id);
+            try {
+
+                const req = await $fetch("/api/products/products", {
+                    method: "GET",
+                    query: {
+                        "active": true,
+                        "inStock": true,
+                        "sortBy": 0,
+                        "available": true,
+                        "pageSize": 7,
+                        q: q
+
+                    },
+                });
+                // console.log(req);
+                // this.data = req;
+                return req
+
+            } catch (error) {
+                console.log("ERROR fromcontact store:" + error);
+                console.log(error);
+            }
+        },
     },
 });
