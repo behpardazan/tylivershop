@@ -6,6 +6,28 @@
         <div class="lg:w-1/4 hidden lg:block p-2">
           <div class="bg-white p-2 border">
             <ProductsCategory />
+            <div class="stock-box">
+              <strong>برند ها</strong>
+              <hr>
+              <div class="flex items-center p-1 text-sm" v-for="item in 10">
+                <input class="m-1" type="checkbox">
+                <label for="">کالا های موجود</label>
+              </div>
+              
+            </div>
+            <div class="stock-box mt-2">
+              <strong>موجودی</strong>
+              <hr>
+              <div class="flex items-center p-1 text-sm">
+                <input class="m-1" type="radio">
+                <label for="">کالا های موجود</label>
+              </div>
+              
+              <div class="flex items-center p-1 text-sm">
+                <input class="m-1" type="radio">
+                <label for="">کالا های ناموجود</label>
+              </div>
+            </div>
           </div>
         </div>
         <div class="lg:w-3/4 w-full">

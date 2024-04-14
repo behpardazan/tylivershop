@@ -5,16 +5,20 @@
     <div class="tree p-1">
       <ul class="treeItem" v-for="item in categoryStore?.data?.list">
         <li class="mb-1 flex flex-wrap items-center">
-          <button
+          <button 
             @click="acardeonHandler"
-            class="p-1 items-center flex transition hover:-rotate-45"
+            class="p-1 items-center w-[25px] flex transition 
+            hover:-rotate-45"
           >
             <UIcon class="pointer-events-none" name="i-heroicons-chevron-left-20-solid" />
           </button>
-          <span class="text-sm hover:font-bold">{{ item?.name }}</span>
+          <span class="text-sm hover:font-bold block w-[calc(100%-50px)]">{{ item?.name }}</span>
           <ul class="text-sm itemBranch ps-5 w-fulll hidden">
             <li class="p-1 ps-3" v-for="element in item?.children">
-              {{ element?.name }}
+                <span class="hover:font-bold ">
+                  {{ element?.name }}
+                </span>
+              
             </li>
           </ul>
         </li>
