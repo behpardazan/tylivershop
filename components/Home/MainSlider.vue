@@ -22,8 +22,13 @@
       @swiper="onSwiper"
       @slideChange="onSlideChange"
     >
-      <swiper-slide v-for="item in 15" class="text-center text-xs bg-red-100 p-1 py-2 min-h-[260px] min-w-[260px] rounded rounded-lg">
-        <nuxt-link to="#"></nuxt-link>
+      <swiper-slide v-for="item in result?.list"
+       class="text-center text-xs bg-red-100 overflow-hidden min-h-[260px] min-w-[260px] rounded rounded-lg">
+        <nuxt-link to="#" class="block">
+          <img :src="showImageBaseUrl+item?.picture?.url"
+            class="w-full h-[300px] object-cover"
+          alt="item?.name">
+        </nuxt-link>
 
     </swiper-slide>
 
@@ -45,6 +50,19 @@
         SwiperSlide,
       },
       setup() {
+
+        const {
+  public: { showImageBaseUrl },
+} = useRuntimeConfig();
+
+const bannerStore = useBanner();
+
+const result = ref();
+
+onMounted(async()=>{
+    result.value = await bannerStore.getBanner( bannerStore.mainSlider);
+
+})
         const onSwiper = (swiper) => {
           console.log(swiper);
         };
@@ -55,6 +73,8 @@
           onSwiper,
           onSlideChange,
           modules: [Pagination],
+          bannerStore,
+result,showImageBaseUrl
         };
       },
     };
