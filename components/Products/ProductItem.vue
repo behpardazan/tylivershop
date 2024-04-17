@@ -16,7 +16,7 @@
     </p>
     <div class="functions mt-auto">
       <button class="bg-yellow-500 p-2 w-full rounded">افزودن به سبد خرید</button>
-      <!-- <div class="count flex justify-between mt-1 items-center">
+      <div class="count flex justify-between mt-1 items-center">
         <button class="bg-yellow-500 p-2 w-[50px] rounded">سبد</button>
 
         <button class="bg-black text-white w-[30px] h-[30px] rounded-full text-xl">
@@ -74,7 +74,7 @@
           >
         </button>
         <button class="bg-yellow-500 p-2 w-1/3 rounded">سبد</button>
-      </div> -->
+      </div>
     </div>
   </nuxt-link>
 </template>

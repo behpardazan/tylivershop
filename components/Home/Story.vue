@@ -54,7 +54,7 @@
           <UIcon name="i-heroicons-x-mark-16-solid" />
         </button>
       </div>
-      <img class="w-[300px]" src="/img/blog.jpg" alt="" />
+      <img class="w-[300px]" src="/img/images.jpg" alt="" />
     </div>
   </div>
 </template>

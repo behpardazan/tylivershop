@@ -152,7 +152,7 @@
         </nuxt-link>
         <nuxt-link
           class="px-1 flex flex-col items-center lg:border-s border-dotted border-gray-400 lg:ps-4 lg:ms-4"
-          to="#"
+          to="/contact"
         >
           <svg
             width="12"
