@@ -8,7 +8,7 @@
     <HomePopularProducts />
     <HomeAdsBannerOne />
     <HomeLatestProducts />
-    <!-- <HomeBrands /> -->
+    <HomeBrands />
     <HomeBlogs />
   </main>
 </template>

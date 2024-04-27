@@ -29,9 +29,9 @@
 
 
                 }" :space-between="30">
-                <swiper-slide v-for="item in 10" class="text-center text-xs max-w-[250px]">
+                <swiper-slide v-for="item in result?.list" class="text-center text-xs max-w-[250px]">
 
-                    <BlogsBlogItem />
+                    <BlogsBlogItem :data="item" />
                 </swiper-slide>
 
             </swiper>
@@ -47,5 +47,13 @@
 
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
-
+  
+const postStore = usePost();
+  
+  const result = ref();
+  
+  onMounted(async()=>{
+      result.value = await postStore.getPost(postStore.latest);
+  
+  })
 </script>

@@ -10,6 +10,7 @@
     />
     <div class="container p-2">
       <h1>{{ $t("products") }}</h1>
+      {{ data?.name }}
       <div class="flex">
         <div class="lg:w-1/4 hidden lg:block p-2">
           <div class="bg-white p-2 border">
@@ -131,7 +132,6 @@
               <ProductsProductItem :data="item" />
             </div>
           </div>
-          {{ data?.pageIndex }}
           <GlobalPaging
             :pageCount="parseInt(data?.totalCount / data?.pageSize) + 1"
             :pageIndex="data?.pageIndex"
@@ -180,6 +180,7 @@ const isOpen = ref(false);
 const data = ref();
 const range1 = ref(100);
 const range2 = ref(3000000);
+const route = useRoute();
 
 const customeConfig = ref({
   active: true,
@@ -190,11 +191,12 @@ const customeConfig = ref({
   PriceTo: range2.value,
   InStock: true,
   PageIndex: 1,
+  categoryLabels: [route.params.id],
 });
 
 onMounted(async () => {
-  data.value = await productsStore.getProducts(productsStore.lates);
-
+  // data.value = await productsStore.getProducts(productsStore.lates);
+  data.value = await productsStore.getProducts(customeConfig.value);
   // console.log(await productsStore.getProducts(productsStore.popular));
 });
 

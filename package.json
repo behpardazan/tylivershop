@@ -14,12 +14,14 @@
         "@nuxtjs/i18n": "^8.0.0",
         "nuxt": "^3.8.2",
         "sass": "^1.71.1",
-        "vue": "^3.3.10",
+        "vue": "latest",
         "vue-router": "^4.2.5"
     },
     "dependencies": {
         "@nuxt/ui": "npm:@nuxt/ui-edge@latest",
         "@pinia/nuxt": "^0.5.1",
+        "jalali-moment": "^3.3.11",
+        "medium-zoom": "^1.1.0",
         "nuxt-swiper": "^1.2.2",
         "pinia": "^2.1.7",
         "swiper": "^11.0.7",

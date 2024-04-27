@@ -30,6 +30,16 @@
     "mostVisited": "mostVisited",
     "cheapest": "cheapest  ",
     "expensive": "expensive  ",
+    "advancedSearch": " advanced search  ",
+    "LatestNewsandArticles": "Latest News and Articles ",
+    "archive": "archive",
+    "from": "from",
+    "to": "to",
+    "filter": "filter",
+    "QR": "QR",
+    "compare": "compare",
+    "like": "like",
+
 
 
     "authorize": "authorize",

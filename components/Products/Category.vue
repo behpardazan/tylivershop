@@ -11,10 +11,12 @@
           >
             <UIcon class="pointer-events-none" name="i-heroicons-chevron-left-20-solid" />
           </button>
-          <span class="text-sm hover:font-bold">{{ item?.name }}</span>
+          <nuxt-link :to="'/search/' + item?.label" class="text-sm hover:font-bold">{{
+            item?.name
+          }}</nuxt-link>
           <ul class="text-sm itemBranch ps-5 w-fulll hidden">
             <li class="p-1 ps-3" v-for="element in item?.children">
-              {{ element?.name }}
+              <nuxt-link :to="'/search/' + element?.label">{{ element?.name }}</nuxt-link>
             </li>
           </ul>
         </li>
@@ -40,5 +42,8 @@ ul {
   li {
     list-style-type: unset !important;
   }
+}
+strong {
+  font-size: 14px !important;
 }
 </style>
