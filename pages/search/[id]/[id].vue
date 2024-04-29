@@ -213,13 +213,20 @@
           {{ $t("QR") }}
         </nuxt-link>
       </div>
-      <div class="w-full lg:w-1/2"></div>
+      <div class="w-full lg:w-1/3"></div>
       <div class="image-box w-full lg:w-1/2 border rounded mt-1 flex justify-center">
         <img
           :src="showImageBaseUrl + data?.data?.picture?.url"
           alt="A fluffy cat"
           class="image-zoomable w-[250px] h-[250px]"
         />
+      </div>
+      <div class="info-box lg:w-1/2 w-full">
+        <p><strong>{{ $t('brand') }}:</strong>{{ data?.data?.name }}</p>
+        <p><strong>{{ $t('category') }}:</strong>{{ data?.data?.category?.name }}</p>
+        <p><strong>{{ $t('summary') }}:</strong>{{ data?.data?.category?.description }}</p>
+        <p><strong>{{ $t('price') }}:</strong>{{ data?.data?.price?.toLocaleString() }} <span class="text-gray-500"> {{ $t('toman') }}</span></p>
+        <p  class="text-gray-500"><strong>{{ $t('oldPrice') }}:</strong><del>{{ data?.data?.price?.toLocaleString() }}</del> <span> {{$t('toman')}}</span></p>
       </div>
       <div class="info-box"></div>
     </div>

@@ -23,6 +23,8 @@
         <UIcon class="me-1" name="i-heroicons-eye" />
         {{ data?.visitCount }}</span
       >
+
+      
     </div>
   </div>
 </template>

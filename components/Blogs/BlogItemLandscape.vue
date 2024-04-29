@@ -1,9 +1,11 @@
 <template>
-  <div
+  <NuxtLink :to="data?.id+'-'+data?.name "
     class="blogItem bg-gray-100 border rounded-xl overflow-hidden flex mb-2 lg:w-1/3 lg:p-1"
   >
+  <!-- {{ data }} -->
+  
     <img
-      class="object-cover w-1/4 h-[100px]"
+      class="object-cover w-1/4 h-[100px] rounded"
       :src="showImageBaseUrl + data?.picture?.url"
       :alt="data?.seoPictureAlt"
     />
@@ -24,7 +26,7 @@
         >
       </p>
     </div>
-  </div>
+  </NuxtLink>
 </template>
 
 <script setup>

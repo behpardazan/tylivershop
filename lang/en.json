@@ -39,7 +39,11 @@
     "QR": "QR",
     "compare": "compare",
     "like": "like",
-
+    "brand": "brand",
+    "summary": "summary",
+    "price": "price",
+    "oldPrice": "old price",
+    "toman": "toman  ",
 
 
     "authorize": "authorize",
