@@ -1,6 +1,7 @@
 <template>
-  <NuxtLink :to="data?.id+'-'+data?.name "
-    class="blogItem bg-gray-100 border rounded-xl overflow-hidden flex mb-2 lg:w-1/3 lg:p-1"
+  <NuxtLink :to="'/blog/'+data?.id+'-'+data?.name "
+    class="blogItem bg-gray-100 border rounded-xl 
+    overflow-hidden flex mb-2 w-full lg:w-1/3 lg:p-1"
   >
   <!-- {{ data }} -->
   

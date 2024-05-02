@@ -1,5 +1,16 @@
 <template>
   <section class="product-inner">
+    <GlobalBreedCrumb
+      :data="[
+        {
+          name: $t('products'),
+          url: `/search`,
+        }, {
+          name: data?.data?.name,
+          url: ``,
+        },
+      ]"
+    />
     <div class="container p-2 flex flex-wrap">
       <div class="title w-full">
         <h1>{{ data?.data?.name }}</h1>
@@ -223,6 +234,7 @@
       </div>
       <div class="info-box lg:w-1/2 w-full">
         <p><strong>{{ $t('brand') }}:</strong>{{ data?.data?.name }}</p>
+        <p><strong>{{ $t('code') }}:</strong>{{ data?.data?.codeValue }}</p>
         <p><strong>{{ $t('category') }}:</strong>{{ data?.data?.category?.name }}</p>
         <p><strong>{{ $t('summary') }}:</strong>{{ data?.data?.category?.description }}</p>
         <p><strong>{{ $t('price') }}:</strong>{{ data?.data?.price?.toLocaleString() }} <span class="text-gray-500"> {{ $t('toman') }}</span></p>
@@ -231,8 +243,8 @@
       <div class="info-box"></div>
     </div>
   </section>
-  <ProductsSimilarProducts />
-  {{ data?.data }}
+  <ProductsSimilarProducts :similarData="{categoryId:data?.data?.category?.id,productId: data?.data?.id}" />
+  <!-- {{ data?.data }} -->
 </template>
 
 <script setup>
@@ -246,7 +258,7 @@ const { data, pending, error, refresh } = await useFetch("/api/products/productI
 </script>
 <style lang="scss">
 .medium-zoom-overlay {
-  background-color: red !important;
+  background-color: rgba(10, 0, 0, 0.657) !important;
   z-index: 1000;
 }
 

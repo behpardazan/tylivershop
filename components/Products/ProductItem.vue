@@ -8,6 +8,7 @@
       :src="showImageBaseUrl + data?.picture?.url"
       :alt="data?.seoPictureAlt"
     />
+    <!-- showImageBaseUrl + data?.picture?.url -->
     <p>
       <strong>{{ data?.name }}</strong>
     </p>
@@ -76,6 +77,8 @@
         <button class="bg-yellow-500 p-2 w-1/3 rounded">سبد</button>
       </div> -->
     </div>
+
+    <!-- {{ data }} -->
   </nuxt-link>
 </template>
 

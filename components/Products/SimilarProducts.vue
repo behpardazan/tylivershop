@@ -1,6 +1,6 @@
 <template>
   <section class="p-2 overflow-hidden">
-    <!-- {{ data}} -->
+    {{ similarData}}
     <div class="container">
       <strong class="flex items-center justify-start">
         <svg
@@ -51,15 +51,13 @@
         @slideChange="onSlideChange"
       >
         <swiper-slide
-          v-for="item in sliceData"
+          v-for="item in data?.list"
           class="text-center max-w-[250px] min-w-[250px] text-xs hover:bg-gray-100 p-1 py-2 rounded rounded-lg"
         >
           <!-- {{ item }} -->
 
-          <productsProductItemTiny
-            :index="index"
-            :data="element"
-            v-for="(element, index) in item"
+          <ProductsProductItem
+            :data="item"
           />
         </swiper-slide>
       </swiper>
@@ -71,23 +69,33 @@
 import { Swiper, SwiperSlide } from "swiper/vue";
 const productsStore = useProducts();
 
+const props = defineProps(['similarData'])
+
 const data = ref();
 const sliceData = ref([]);
 onMounted(async () => {
-  data.value = await productsStore.getProducts(productsStore.popular);
+  data.value = await productsStore.getProducts({
+                "active": true,
+                "inStock": true,
+                "sortBy": 10,
+                "available": true,
+                "NotId":props?.similarData?.productId,
+                "CategoryIds":[props?.similarData?.productId]
+            });
 
-  sliceData.value = splitData(data?.value?.list, 3);
+  // sliceData.value = splitData(data?.value?.list, 3);
   // console.log(await productsStore.getProducts(productsStore.popular));
+  console.log(props?.similarData);
 });
 
-const splitData = (myList, chunkSize) => {
-  const groupedLists = [];
+// const splitData = (myList, chunkSize) => {
+//   const groupedLists = [];
 
-  for (let i = 0; i < myList?.length; i += chunkSize) {
-    groupedLists.push(myList?.slice(i, i + chunkSize));
-  }
+//   for (let i = 0; i < myList?.length; i += chunkSize) {
+//     groupedLists.push(myList?.slice(i, i + chunkSize));
+//   }
 
-  console.log(groupedLists);
-  return groupedLists;
-};
+//   console.log(groupedLists);
+//   return groupedLists;
+// };
 </script>

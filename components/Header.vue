@@ -3,7 +3,9 @@
     <HeaderAds />
     <div
       v-if="isOpenDesktop == true"
-      class="cover bg-[#000000a1] z-10 h-[calc(100vh-152px)] min-w-[100vw] p-2 right-0 fixed top-[173px]"
+      class="cover bg-[#000000a1] z-10 
+      h-[calc(100vh-144px)] min-w-[100vw] 
+      p-2 right-0 fixed bottom-[0]"
     ></div>
     <div class="container lg:flex-row-reverse flex items-center p-1">
       <div
@@ -82,9 +84,9 @@
         <span v-else>{{ $t("Profile") }}</span>
       </div>
       <HeaderSearch></HeaderSearch>
-      <div class="logo">
+      <NuxtLink to="/" class="logo">
         <img class="w-[90px] h-auto" src="/img/logo/logo.png" alt="" />
-      </div>
+      </NuxtLink>
     </div>
     <div
       class="toolbar lg:static py-3 lg:py-0 text-sm fixed bottom-0 right-0 w-full bg-gray-200 z-10"
@@ -202,7 +204,7 @@
         </nuxt-link>
         <nuxt-link
           class="px-1 hidden lg:flex flex-col items-center lg:border-s border-dotted border-gray-400 lg:ps-4 lg:ms-4"
-          to="#"
+          to="/blog"
         >
           <span>{{ $t("blogs") }}</span>
         </nuxt-link>

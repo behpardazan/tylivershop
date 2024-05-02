@@ -1,9 +1,12 @@
 <template>
-  <div
-    class="blogItem bg-gray-100 border rounded-xl overflow-hidden flex mb-2 relative w-full lg:w-1/2 lg:mb-0 lg:h-[200px]"
+  <NuxtLink :to="'/blog/'+data?.id+'-'+data?.name "  
+    class="blogItem bg-gray-100 border rounded-xl
+     overflow-hidden flex mb-2 relative w-full
+      lg:w-1/2 lg:mb-0 h-[135px] lg:h-[200px]"
   >
     <img
-      class="object-cover w-full h-full absolute top-0 right-0 brightness-50"
+      class="object-cover w-full h-full absolute top-
+       right-0 brightness-50"
       :src="showImageBaseUrl + data?.picture?.url"
       :alt="data?.seoPictureAlt"
     />
@@ -24,7 +27,7 @@
         >
       </p>
     </div>
-  </div>
+  </NuxtLink>
 </template>
 
 <script setup>
