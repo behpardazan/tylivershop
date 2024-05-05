@@ -27,7 +27,11 @@
         <br />
         <br />
         <div class="flex flex-wrap">
-          <BlogsBlogItemLandscape v-for="item in result?.list" :data="item" />
+          <BlogsBlogItemLandscape
+            class="lg:w-1/3 lg:p-2"
+            v-for="item in result?.list"
+            :data="item"
+          />
         </div>
       </div>
     </div>

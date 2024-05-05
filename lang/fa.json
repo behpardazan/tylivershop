@@ -12,6 +12,7 @@
     "services": "خدمات",
     "gallery": "گالری",
     "blogs": "مقالات",
+    "lastBlogs": "آخرین مقالات",
     "counseling": "مشاوره",
     "signIn": "ورود",
     "signUp": "ثبت نام",
@@ -21,10 +22,14 @@
     "search": "جستجو",
     "searchIn": "جستجو در",
     "basket": " سبد خرید",
+    "add2basket": "افزودن به سبد خرید",
     "category": "دسته بندی",
     "shoppingByCategory": "خرید بر اساس دسته بندی",
     "latestProducts": "جدیدترین محصولات",
     "mostVisitedProduct": "پربازدید ترین محصولات",
+    "similarProduct": " محصولات مشابه ",
+    "introductionOfProduct": " معرفی محصول  ",
+    "technicalDescription": "توضیحات تخصصی",
     "ourBrands": "برند های ما",
     "bestSelling": " پرفروش ترین ",
     "mostVisited": " پربازدید ترین",
@@ -44,6 +49,8 @@
     "price": "قیمت ",
     "oldPrice": "قیمت قبلی ",
     "toman": "تومان  ",
+    "paymentPrice": "مبلغ قابل پرداخت",
+    "selectCount": "تعداد کالا را مشخص کنید",
 
 
 

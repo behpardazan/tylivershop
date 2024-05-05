@@ -1,12 +1,12 @@
 export default defineEventHandler(async(event) => {
-    const { public: { baseUrl } } = useRuntimeConfig()
+    const { public: { baseUrl, testUrl } } = useRuntimeConfig()
 
     const token = getCookie(event, 'token');
     console.log("server api");
-    console.log(`${baseUrl}/api/EndUser/CurrentUser`);
+    console.log(`${testUrl}/api/EndUser/CurrentUser`);
     console.log(`Bearer ${token}`)
     try {
-        const data = await $fetch(`${baseUrl}/api/EndUser/CurrentUser`, {
+        const data = await $fetch(`${testUrl}/api/EndUser/CurrentUser`, {
             method: 'GET',
             headers: {
                 'Accept': 'text/plain',

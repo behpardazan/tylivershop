@@ -196,7 +196,7 @@ const customeConfig = ref({
 
 onMounted(async () => {
   // data.value = await productsStore.getProducts(productsStore.lates);
-  data.value = await productsStore.getProducts(customeConfig.value);
+  data.value = await productsStore.getProducts(customeConfig?.value);
   // console.log(await productsStore.getProducts(productsStore.popular));
 });
 

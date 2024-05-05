@@ -3,9 +3,7 @@
     <HeaderAds />
     <div
       v-if="isOpenDesktop == true"
-      class="cover bg-[#000000a1] z-10 
-      h-[calc(100vh-144px)] min-w-[100vw] 
-      p-2 right-0 fixed bottom-[0]"
+      class="cover bg-[#000000a1] z-10 h-[calc(100vh-144px)] min-w-[100vw] p-2 right-0 fixed bottom-[0]"
     ></div>
     <div class="container lg:flex-row-reverse flex items-center p-1">
       <div
@@ -78,10 +76,10 @@
             data-v-a81738bd=""
           ></path>
         </svg>
-        <span v-if="authStor?.userData?.data?.firstName">
+        <NuxtLink to="/profile" v-if="authStor?.userData?.data?.firstName">
           {{ authStor?.userData?.data?.firstName }}
-        </span>
-        <span v-else>{{ $t("Profile") }}</span>
+        </NuxtLink>
+        <NuxtLink to="/auth" v-else>{{ $t("Profile") }}</NuxtLink>
       </div>
       <HeaderSearch></HeaderSearch>
       <NuxtLink to="/" class="logo">
@@ -201,6 +199,12 @@
           to="/about"
         >
           <span>{{ $t("aboutus") }}</span>
+        </nuxt-link>
+        <nuxt-link
+          class="px-1 hidden lg:flex flex-col items-center lg:border-s border-dotted border-gray-400 lg:ps-4 lg:ms-4"
+          to="/brand"
+        >
+          <span>{{ $t("ourBrands") }}</span>
         </nuxt-link>
         <nuxt-link
           class="px-1 hidden lg:flex flex-col items-center lg:border-s border-dotted border-gray-400 lg:ps-4 lg:ms-4"

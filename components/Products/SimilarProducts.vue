@@ -1,6 +1,5 @@
 <template>
-  <section class="p-2 overflow-hidden">
-    {{ similarData}}
+  <section class="p-2 overflow-hidden bg-gray-200">
     <div class="container">
       <strong class="flex items-center justify-start">
         <svg
@@ -31,7 +30,7 @@
           </defs>
         </svg>
 
-        {{ $t("mostVisitedProduct") }}</strong
+        {{ $t("similarProduct") }}</strong
       >
 
       <swiper
@@ -56,9 +55,7 @@
         >
           <!-- {{ item }} -->
 
-          <ProductsProductItem
-            :data="item"
-          />
+          <ProductsProductItem :data="item" />
         </swiper-slide>
       </swiper>
     </div>
@@ -69,19 +66,19 @@
 import { Swiper, SwiperSlide } from "swiper/vue";
 const productsStore = useProducts();
 
-const props = defineProps(['similarData'])
+const props = defineProps(["similarData"]);
 
 const data = ref();
 const sliceData = ref([]);
 onMounted(async () => {
   data.value = await productsStore.getProducts({
-                "active": true,
-                "inStock": true,
-                "sortBy": 10,
-                "available": true,
-                "NotId":props?.similarData?.productId,
-                "CategoryIds":[props?.similarData?.productId]
-            });
+    active: true,
+    inStock: true,
+    sortBy: 10,
+    available: true,
+    NotId: props?.similarData?.productId,
+    CategoryIds: [props?.similarData?.categoryId],
+  });
 
   // sliceData.value = splitData(data?.value?.list, 3);
   // console.log(await productsStore.getProducts(productsStore.popular));

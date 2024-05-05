@@ -12,6 +12,7 @@
     "services": "Services",
     "gallery": "Gallery",
     "blogs": "Blogs",
+    "lastBlogs": "Last Blogs",
     "counseling": "Counseling",
     "signIn": "Sign In",
     "signUp": "Sign Up ",
@@ -21,10 +22,16 @@
     "search": "Search",
     "searchIn": "Search In",
     "basket": " basket",
+    "add2basket": " Add to Basket",
+
     "category": "category ",
     "shoppingByCategory": "ُShopping  by category",
     "latestProducts": "Latest Products",
-    "mostVisitedProduct": "پربازدید ترین محصولات",
+    "mostVisitedProduct": "Most Visited Product",
+    "similarProduct": "Similar Product",
+    "introductionOfProduct": " introduction of product   ",
+    "technicalDescription": " technical description",
+
     "ourBrands": "ourBrands",
     "bestSelling": "bestSelling",
     "mostVisited": "mostVisited",
@@ -44,6 +51,8 @@
     "price": "price",
     "oldPrice": "old price",
     "toman": "toman  ",
+    "paymentPrice": "Payment Price",
+    "selectCount": "selectCount",
 
 
     "authorize": "authorize",

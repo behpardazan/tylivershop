@@ -1,5 +1,8 @@
 <template>
-  <NuxtLink :to="'/blog/'+data?.id+'-'+data?.name "  class="blogItem bg-gray-100 border rounded-xl overflow-hidden">
+  <NuxtLink
+    :to="'/blog/' + data?.id + '-' + data?.name"
+    class="blogItem bg-gray-100 border rounded-xl overflow-hidden"
+  >
     <img
       class="object-cover w-full h-[200px]"
       :src="showImageBaseUrl + data?.picture?.url"
@@ -23,8 +26,6 @@
         <UIcon class="me-1" name="i-heroicons-eye" />
         {{ data?.visitCount }}</span
       >
-
-      
     </div>
   </NuxtLink>
 </template>

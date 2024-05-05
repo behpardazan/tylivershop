@@ -84,5 +84,24 @@ export const useProducts = defineStore("productsStore", {
                 console.log(error);
             }
         },
+        async getRelatedProducts(id) {
+            // console.log(id);
+            try {
+
+                const req = await $fetch("/api/products/relatedProducts", {
+                    method: "GET",
+                    query: {
+                        id: id
+                    }
+                });
+                // console.log(req);
+                // this.data = req;
+                return req
+
+            } catch (error) {
+                console.log("ERROR fromcontact store:" + error);
+                console.log(error);
+            }
+        },
     },
 });

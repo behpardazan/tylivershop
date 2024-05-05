@@ -1,6 +1,6 @@
 <template>
   <nuxt-link
-    to=""
+    :to="'/search/pr/' + data?.id + '-' + data?.name?.replaceAll(' ', '-')"
     class="block border p-1 text-sm bg-white rounded-lg flex flex-col min-h-[310px]"
   >
     <img

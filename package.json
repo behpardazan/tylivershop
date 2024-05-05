@@ -22,10 +22,12 @@
         "@pinia/nuxt": "^0.5.1",
         "jalali-moment": "^3.3.11",
         "medium-zoom": "^1.1.0",
+        "nuxt-leaflet": "^0.0.27",
         "nuxt-swiper": "^1.2.2",
         "pinia": "^2.1.7",
         "swiper": "^11.0.7",
-        "tailwind-scrollbar-hide": "^1.1.7"
+        "tailwind-scrollbar-hide": "^1.1.7",
+        "vue3-google-map": "^0.20.0"
     },
     "overrides": {
         "vue": "latest"

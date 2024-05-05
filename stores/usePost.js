@@ -9,6 +9,11 @@ export const usePost = defineStore("postStore", {
                 "sortBy": 1,
                 "available": true
             },
+            latestInBlog: {
+                "sortBy": 1,
+                "available": true,
+                "pageSize": 5
+            },
 
 
         };

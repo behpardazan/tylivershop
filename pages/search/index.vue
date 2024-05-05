@@ -193,7 +193,7 @@ const customeConfig = ref({
 });
 
 onMounted(async () => {
-  data.value = await productsStore.getProducts(productsStore.lates);
+  data.value = await productsStore.getBrand(productsStore.lates);
 
   // console.log(await productsStore.getProducts(productsStore.popular));
 });

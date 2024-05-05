@@ -28,9 +28,9 @@
       <ul>
         <li v-for="item in result?.list">
           <nuxt-link
-            to="/"
+            :to="'/search/pr/' + item?.id + '-' + item?.name?.replaceAll(' ', '-')"
             class="flex items-center justify-start p-1 border-t"
-            @click="$emit('closeSearch')"
+            @click="$emit('closeSearch'), (q = '')"
           >
             <img
               :src="showImageBaseUrl + item?.picture?.url"

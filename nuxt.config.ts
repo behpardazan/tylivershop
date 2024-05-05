@@ -55,6 +55,7 @@ export default defineNuxtConfig({
       projectName:"تایلیور شاپ",
       
       baseUrl:"https://tylivershop-api.bhptest.ir",
+      testUrl:"https://api.aranegarcenter.com",
       imageUploaderUrl:"https://tylivershop-file.bhptest.ir",
       showImageBaseUrl:"https://tylivershop-file.bhptest.ir",
       fileUploaderUrl:"https://api.aranegarcenter.com",
