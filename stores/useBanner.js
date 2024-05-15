@@ -6,26 +6,31 @@ export const useBanner = defineStore("bannerStore", {
         return {
             data: null,
             topGif: {
-                CategoryLabel:'ads-banner',
+                CategoryLabel: 'ads-banner',
                 "sortBy": 1,
                 "available": true
             },
             mainSlider: {
-                CategoryLabel:'mainslider',
+                CategoryLabel: 'mainslider',
                 "sortBy": 1,
                 "available": true
             },
             twoBanner: {
-                CategoryLabel:'towbanner',
+                CategoryLabel: 'towbanner',
                 "sortBy": 1,
                 "available": true
             },
             singleBanner: {
-                CategoryLabel:'singlebanner',
+                CategoryLabel: 'singlebanner',
                 "sortBy": 1,
                 "available": true
             },
-           
+            story: {
+                CategoryLabel: 'story',
+                "sortBy": 1,
+                "available": true
+            },
+
             // popular: {
             //     "active": true,
             //     "notId": 10,

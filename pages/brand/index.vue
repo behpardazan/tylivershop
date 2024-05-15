@@ -13,7 +13,7 @@
       <!-- {{ data?.list?.length }} -->
 
       <div class="flex flex-wrap">
-        <div class="w-1/4 p-2" v-for="item in data?.list">
+        <div class="w-1/2 lg:w-1/4 p-2" v-for="item in data?.list">
           <NuxtLink :to="'/brand/' + item?.id" class="border p-2 rounded block">
             <img
               class="h-[200px] w-full rounded"

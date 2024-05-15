@@ -8,12 +8,15 @@
       :src="showImageBaseUrl + data?.picture?.url"
       :alt="data?.seoPictureAlt"
     />
-    <div class="info text-justify p-3 relative">
+    <div class="info text-justify p-3 relative bg-gray-100 h-[120px]">
       <strong>{{ data?.name }} </strong>
       <br />
       <br />
 
-      <span>{{ data?.summary }}</span>
+      <span v-if="data?.summary?.length > 100">{{
+        data?.summary?.substr(0, 100) + "..."
+      }}</span>
+      <span v-else> {{ data?.summary }}</span>
       <br />
       <span class="text-gray-600">{{
         moment(data?.publishDate).locale("fa").format("dddd  YYYY/MM/DD")

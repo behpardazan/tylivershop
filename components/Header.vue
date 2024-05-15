@@ -51,9 +51,17 @@
           ></ellipse>
         </svg>
         <span>{{ $t("basket") }}</span>
-        <UBadge class="absolute left-0 top-[-5px] text-xs p-1" color="red" variant="solid"
-          >5</UBadge
-        >
+        <!-- <UBadge class="absolute left-0 top-[-5px] text-xs p-1" color="red" variant="solid"
+          >5</UBadge> -->
+        <span class="relative flex h-3 w-3">
+          <span
+            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"
+          ></span>
+          <span
+            class="relative inline-flex rounded-full h-4 w-4 bg-rose-500 flex items-center text-white justify-center"
+            >5</span
+          >
+        </span>
       </div>
       <div
         class="account hidden lg:flex text-xs items-center w-[150px] ps-2 justify-center"
@@ -127,8 +135,9 @@
           <HeaderMegaMenu v-if="isOpenDesktop == true" />
         </button>
         <nuxt-link
+          v-if="authStor?.userData?.data?.firstName"
           class="px-1 flex flex-col items-center lg:border-s border-dotted border-gray-400 lg:ps-4 lg:ms-4 lg:hidden"
-          to="#"
+          to="/profile"
         >
           <svg
             width="24"
@@ -148,8 +157,29 @@
           <span v-if="authStor?.userData?.data?.firstName">
             {{ authStor?.userData?.data?.firstName }}
           </span>
-          <span v-else>{{ $t("Profile") }}</span>
         </nuxt-link>
+        <NuxtLink
+          class="px-1 flex flex-col items-center lg:border-s border-dotted border-gray-400 lg:ps-4 lg:ms-4 lg:hidden"
+          to="/auth"
+          v-else
+        >
+          <svg
+            width="24"
+            height="26"
+            viewBox="0 0 24 26"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1 23.88V15.6594C1 13.7663 2.73197 12.3464 4.58835 12.7177L8.46991 13.494C10.8002 13.96 13.1998 13.96 15.5301 13.494L19.4116 12.7177C21.268 12.3464 23 13.7663 23 15.6594V21.0424C23 23.2086 20.7745 24.6608 18.7918 23.7884L12 20.8M15.96 4.96V4.96C15.96 7.14705 14.187 8.92 12 8.92V8.92C9.81295 8.92 8.04 7.14705 8.04 4.96V4.96C8.04 2.77295 9.81295 1 12 1V1C14.187 1 15.96 2.77295 15.96 4.96Z"
+              stroke="#0F0F0F"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+          {{ $t("Profile") }}</NuxtLink
+        >
+
         <nuxt-link
           class="px-1 flex flex-col items-center lg:border-s border-dotted border-gray-400 lg:ps-4 lg:ms-4"
           to="/contact"

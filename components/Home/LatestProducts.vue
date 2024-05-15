@@ -34,6 +34,8 @@
       >
 
       <swiper
+        :freeMode="true"
+        :modules="modules"
         :breakpoints="{
           '350': {
             slidesPerView: 1,
@@ -51,7 +53,7 @@
       >
         <swiper-slide
           v-for="item in sliceData"
-          class="text-center max-w-[250px] min-w-[250px] text-xs p-1 py-2 rounded rounded-lg"
+          class="text-center text-xs p-1 py-2 rounded rounded-lg"
         >
           <!-- {{ item }} -->
 
@@ -68,6 +70,8 @@
 
 <script setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css/free-mode";
+import { FreeMode } from "swiper/modules";
 const productsStore = useProducts();
 
 const data = ref();
@@ -89,3 +93,10 @@ const splitData = (myList, chunkSize) => {
   return groupedLists;
 };
 </script>
+<style scoped>
+@media (max-width: 600px) {
+}
+.swiper {
+  padding-left: 80px;
+}
+</style>

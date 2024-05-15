@@ -1,6 +1,6 @@
 <template>
   <img
-    class="w-full h-[50px] object-cover"
+    class="w-full h-[40px] object-cover"
     :src="showImageBaseUrl + result?.list[0]?.picture?.url"
     :alt="projectName"
   />

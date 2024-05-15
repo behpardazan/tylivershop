@@ -17,16 +17,27 @@
       @slideChange="onSlideChange"
     >
       <swiper-slide
-        @click="showModal = true"
-        v-for="item in 15"
+        @click="
+          () => {
+            showModal = true;
+            storydata.name = item?.name;
+            storydata.image = showImageBaseUrl + item?.picture?.url;
+          }
+        "
+        v-for="item in result?.list"
         class="text-center min-w-[60px] text-xs hover:bg-gray-100 p-1 py-2 rounded rounded-lg"
       >
         <div
-          class="story w-[60px] h-[60px] bg-gray-200 rounded-full m-auto border border-blue-600 shadow-lg flex items-center justify-center"
+          class="story w-[60px] h-[60px] bg-gray-200 rounded-full m-auto border border-blue-600 overflow-hidden shadow-lg flex items-center justify-center"
         >
-          <img src="/img/logo/logo.png" alt="" />
+          <img
+            class="w-full h-full object-cover border border-white rounded-full"
+            :src="showImageBaseUrl + item?.picture?.url"
+            alt=""
+          />
         </div>
-        <span class="text-xs mt-2 block">متنی برای نمایش نام استوری</span>
+        <span class="text-xs mt-2 block">{{ item?.name }}</span>
+        <!-- {{}} -->
         <svg
           width="10"
           height="10"
@@ -49,12 +60,12 @@
       v-if="showModal"
     >
       <div class="story-header flex items-center justify-between w-[300px]">
-        <span class="text-white">عنوان استوری</span>
+        <span class="text-white"> {{ storydata?.name }}</span>
         <button class="text-white" @click="showModal = false" type="">
           <UIcon name="i-heroicons-x-mark-16-solid" />
         </button>
       </div>
-      <img class="w-[300px]" src="/img/images.jpg" alt="" />
+      <img class="w-[300px]" :src="storydata?.image" alt="" />
     </div>
   </div>
 </template>
@@ -71,6 +82,22 @@ export default {
   },
   setup() {
     const showModal = ref(false);
+    const {
+      public: { showImageBaseUrl },
+    } = useRuntimeConfig();
+
+    const storydata = ref({
+      name: "",
+      image: "",
+    });
+
+    const bannerStore = useBanner();
+
+    const result = ref();
+
+    onMounted(async () => {
+      result.value = await bannerStore.getBanner(bannerStore.story);
+    });
     const onSwiper = (swiper) => {
       console.log(swiper);
     };
@@ -81,6 +108,10 @@ export default {
       onSwiper,
       onSlideChange,
       showModal,
+      bannerStore,
+      result,
+      showImageBaseUrl,
+      storydata,
     };
   },
 };
