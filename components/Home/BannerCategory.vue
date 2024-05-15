@@ -1,7 +1,7 @@
 <template>
     <section class=" p-2 overflow-hidden  bg-gray-100">
         <div class="container">
-            <strong class="flex items-center justify-start">
+            <strong class="flex items-center dark:text-black justify-start">
                 <svg width="23" height="23" class="me-2" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <rect width="23" height="23" fill="url(#pattern0)"/>
 <defs>
@@ -18,23 +18,23 @@
                     <div class="item h-[170px] w-[140px]  p-1 relative flex flex-col items-center justify-ecnter" 
                     v-for="element in categoryStore?.data?.list[0]?.children">
                     <!-- {{showImageBaseUrl+element?.picture?.url}} -->
-                        <img class="w-[120px] h-[120px] object-contain rounded" 
+                        <img class="w-[90px] h-[90px] object-contain rounded" 
                         :src="showImageBaseUrl+element?.picture?.url"  />
-                        <p class="text-sm text-center mt-2">{{element?.name}}   </p>
+                        <p class="text-sm text-center mt-2  dark:text-black ">{{element?.name}}   </p>
                     </div>
                     <div class="item h-[170px] w-[140px]  p-1 relative flex flex-col items-center justify-ecnter" 
                     v-for="element in categoryStore?.data?.list[1]?.children">
                     <!-- {{showImageBaseUrl+element?.picture?.url}} -->
-                        <img class="w-[120px] h-[120px] object-contain rounded" 
+                        <img class="w-[90px] h-[90px] object-contain rounded" 
                         :src="showImageBaseUrl+element?.picture?.url"  />
-                        <p class="text-sm text-center mt-2">{{element?.name}}   </p>
+                        <p class="text-sm text-center  dark:text-black mt-2">{{element?.name}}   </p>
                     </div>
                     <div class="item h-[170px] w-[140px]  p-1 relative flex flex-col items-center justify-ecnter" 
                     v-for="element in categoryStore?.data?.list[2]?.children">
                     <!-- {{showImageBaseUrl+element?.picture?.url}} -->
-                        <img class="w-[120px] h-[120px] object-contain rounded" 
+                        <img class="w-[90px] h-[90px] object-contain rounded" 
                         :src="showImageBaseUrl+element?.picture?.url"  />
-                        <p class="text-sm text-center mt-2">{{element?.name}}   </p>
+                        <p class="text-sm text-center  dark:text-black mt-2">{{element?.name}}   </p>
                     </div>
             </div>
         </div>

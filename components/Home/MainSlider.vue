@@ -7,7 +7,7 @@
         :pagination="{ clickable: true }"
         :breakpoints="{
                     '350': {
-                        slidesPerView: 2,
+                        slidesPerView: 1,
                     },
                     '600': {
                         slidesPerView: 3,
@@ -21,12 +21,16 @@
       :space-between="10"
       @swiper="onSwiper"
       @slideChange="onSlideChange"
+      :autoplay="{
+      delay: 2500,
+      disableOnInteraction: false,
+    }"
     >
       <swiper-slide v-for="item in result?.list"
        class="text-center text-xs bg-red-100 overflow-hidden min-h-[260px] min-w-[260px] rounded rounded-lg">
         <nuxt-link to="#" class="block">
           <img :src="showImageBaseUrl+item?.picture?.url"
-            class="w-full h-[300px] object-cover"
+            class="w-full h-[250px] object-cover"
           alt="item?.name">
         </nuxt-link>
 
@@ -39,7 +43,7 @@
   </template>
   <script>
     import { Swiper, SwiperSlide } from 'swiper/vue';
-    import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+    import { Navigation, Pagination, Scrollbar, A11y,Autoplay } from 'swiper/modules';
   
     // Import Swiper styles
     import 'swiper/css';
@@ -72,7 +76,7 @@ onMounted(async()=>{
         return {
           onSwiper,
           onSlideChange,
-          modules: [Pagination],
+          modules: [Autoplay,Pagination],
           bannerStore,
 result,showImageBaseUrl
         };
@@ -84,6 +88,7 @@ result,showImageBaseUrl
   <style  lang="scss" >
   .main.swiper {
     padding-bottom:40px;
+    padding-left: 50px;
 
     .swiper-pagination{
         top: unset !important;

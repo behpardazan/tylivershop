@@ -1,10 +1,10 @@
 <template>
   <nuxt-link
     :to="'/search/pr/' + data?.id + '-' + data?.name?.replaceAll(' ', '-')"
-    class="block border p-1 text-sm bg-white rounded-lg flex flex-col min-h-[310px]"
+    class="block border p-1 dark:text-black text-sm bg-white rounded-lg flex flex-col min-h-[290px]"
   >
     <img
-      class="min-w-[100px] object-contain w-[100%] h-[200px]"
+      class="min-w-[100px] object-contain w-[100%] h-[170px]"
       :src="showImageBaseUrl + data?.picture?.url"
       :alt="data?.seoPictureAlt"
     />

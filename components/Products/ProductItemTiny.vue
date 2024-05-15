@@ -4,7 +4,7 @@
     class="productItemTiny flex"
   >
     <img
-      class="min-w-[100px] object-contain w-[100px] h-[100px] border rounded p-1 m-1"
+      class="min-w-[100px] object-contain w-[100px] h-[100px] border border-gray-400 rounded p-1 m-1"
       :src="showImageBaseUrl + data?.picture?.url"
       :alt="data?.seoPictureAlt"
     />
@@ -12,9 +12,9 @@
       class="info text-start pt-5 relative w-[calc(100%-100px)] border-gray-500 border-dashed"
       :class="{ 'border-b': (index + 1) % 3 != 0 }"
     >
-      <!-- <UBadge 
-            class="absolute right-0 top-[-5px]" 
-            color="blue" variant="solid">{{index+1}}</UBadge> -->
+       <UBadge 
+            class="absolute left-0 bottom-3" 
+            color="blue" variant="solid">{{index+1}}</UBadge>
       <strong>
         <!-- {{ data.id }} -->
         {{ data?.name }}
@@ -36,3 +36,19 @@ const {
 
 defineProps(["data", "index"]);
 </script>
+
+<style scoped>
+
+.productItemTiny{
+  img{
+    transition: 0.2s
+  }
+}
+
+.productItemTiny:hover{
+  img{
+    transform: scale(1.02);
+  }
+}
+
+</style >

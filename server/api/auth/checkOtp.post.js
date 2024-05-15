@@ -3,7 +3,7 @@ export default defineEventHandler(async(event) => {
     const body = await readBody(event);
     console.log(body);
     try {
-        const checkOtp = await $fetch(`${testUrl}/api/Account/CheckOtp`, {
+        const checkOtp = await $fetch(`${baseUrl}/api/Account/CheckOtp`, {
             method: "POST",
             body: JSON.stringify(body),
             headers: {

@@ -6,7 +6,7 @@ export default defineEventHandler(async(event) => {
 
 
     try {
-        const login = await $fetch(`${testUrl}/api/Account/signin`, {
+        const login = await $fetch(`${baseUrl}/api/Account/signin`, {
             method: "POST",
             body: JSON.stringify(body),
             headers: {

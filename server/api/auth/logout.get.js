@@ -5,7 +5,7 @@ export default defineEventHandler(async(event) => {
 
 
     try {
-        const data = await $fetch(`${testUrl}/api/Account/signout`, {
+        const data = await $fetch(`${baseUrl}/api/Account/signout`, {
             method: 'post',
             headers: {
                 'accept': '*/*',

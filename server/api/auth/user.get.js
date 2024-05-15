@@ -6,7 +6,7 @@ export default defineEventHandler(async(event) => {
     console.log(`${testUrl}/api/EndUser/CurrentUser`);
     console.log(`Bearer ${token}`)
     try {
-        const data = await $fetch(`${testUrl}/api/EndUser/CurrentUser`, {
+        const data = await $fetch(`${baseUrl}/api/EndUser/CurrentUser`, {
             method: 'GET',
             headers: {
                 'Accept': 'text/plain',

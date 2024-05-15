@@ -4,7 +4,7 @@ export default defineEventHandler(async(event) => {
 
     console.log(body);
     try {
-        const response = await $fetch(`${testUrl}/api/Account/otp`, {
+        const response = await $fetch(`${baseUrl}/api/Account/otp`, {
             method: "POST",
             body: JSON.stringify(body),
             headers: {

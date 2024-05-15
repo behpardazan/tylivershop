@@ -5,7 +5,7 @@ export default defineEventHandler(async(event) => {
 
     console.log(body);
     try {
-        const register = await $fetch(`${testUrl}/api/Account/signup`, {
+        const register = await $fetch(`${baseUrl}/api/Account/signup`, {
             method: 'POST',
             body: JSON.stringify(body),
             headers: {

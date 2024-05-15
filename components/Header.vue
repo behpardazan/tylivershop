@@ -87,7 +87,7 @@
         <NuxtLink to="/profile" v-if="authStor?.userData?.data?.firstName">
           {{ authStor?.userData?.data?.firstName }}
         </NuxtLink>
-        <NuxtLink to="/auth" v-else>{{ $t("Profile") }}</NuxtLink>
+        <NuxtLink to="/loginRegister" v-else>{{ $t("Profile") }}</NuxtLink>
       </div>
       <HeaderSearch></HeaderSearch>
       <NuxtLink to="/" class="logo">
@@ -95,12 +95,13 @@
       </NuxtLink>
     </div>
     <div
-      class="toolbar lg:static py-3 lg:py-0 text-sm fixed bottom-0 right-0 w-full bg-gray-200 z-10"
+      class="toolbar lg:static py-1 lg:py-0 text-sm fixed bottom-0 right-0 w-full bg-gray-200 z-10"
     >
       <div
         class="container flex items-center justify-around lg:justify-start min-h-[20px]"
       >
-        <nuxt-link class="px-1 flex flex-col items-center" to="#">
+        <nuxt-link class="px-1 flex flex-col items-center"
+         to="/">
           <svg
             width="26"
             height="26"
@@ -120,10 +121,11 @@
         </nuxt-link>
 
         <button
-          class="lg:hidden px-1 flex flex-col items-center lg:border-s border-gray-200 hidden lg:block lg:ps-4 lg:ms-4"
+          class="lg:hidden px-1 flex flex-col items-center lg:border-s border-gray-200  lg:block lg:ps-4 lg:ms-4"
           @click="isOpen = true"
         >
-          <span>{{ $t("category") }}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 13.5V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 9.75V10.5"/></svg>
+          <span>{{ $t("products") }}</span>
         </button>
         <button
           class="px-1 flex flex-col relative items-center lg:border-s border-dotted border-gray-400 hidden lg:block lg:ps-4 lg:ms-4"
@@ -160,7 +162,7 @@
         </nuxt-link>
         <NuxtLink
           class="px-1 flex flex-col items-center lg:border-s border-dotted border-gray-400 lg:ps-4 lg:ms-4 lg:hidden"
-          to="/auth"
+          to="/loginRegister"
           v-else
         >
           <svg
@@ -297,6 +299,8 @@
         <!-- <Placeholder class="h-full" /> -->
       </UCard>
     </USlideover>
+
+    
   </header>
 </template>
 
@@ -368,6 +372,8 @@ onMounted(async () => {
 .toolbar {
   svg {
     margin-bottom: 10px;
+    width: 17px;
+    height: 20px;
   }
 
   @media (min-width: 1000px) {
@@ -387,6 +393,7 @@ onMounted(async () => {
     button {
       padding-top: 10px;
       padding-bottom: 10px;
+      
     }
   }
 }

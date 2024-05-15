@@ -8,7 +8,7 @@
       :src="showImageBaseUrl + data?.picture?.url"
       :alt="data?.seoPictureAlt"
     />
-    <div class="info text-justify p-3 relative bg-gray-100 h-[120px]">
+    <div class="info text-justify  dark:text-black  p-3 relative bg-gray-100 h-[120px]">
       <strong>{{ data?.name }} </strong>
       <br />
       <br />

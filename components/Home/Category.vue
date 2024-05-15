@@ -1,7 +1,7 @@
 <template>
   <section class="border-t p-2">
     <div class="container">
-      <strong class="block text-center">{{ $t("category") }}</strong>
+      <strong class="block text-center text-xl">{{ $t("products") }}</strong>
       <div class="flex flex-wrap mt-3">
         <Nuxt-link
           :to="'/search/' + categoryStore?.data?.list[0]?.label"

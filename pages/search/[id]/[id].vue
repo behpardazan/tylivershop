@@ -123,10 +123,10 @@
           <strong>{{ $t("price") }}:</strong>{{ data?.data?.price?.toLocaleString() }}
           <span class="text-gray-500"> {{ $t("toman") }}</span>
         </p>
-        <p class="text-gray-500">
+        <!-- <p class="text-gray-500">
           <strong>{{ $t("oldPrice") }}:</strong><del>{{ data?.data?.price?.toLocaleString() }}</del>
           <span> {{ $t("toman") }}</span>
-        </p>
+        </p> -->
 
         <div class="saleBox bg-yellow-500 p-3 mt-4 rounded-lg">
           <div class="finalPrice text-sm flex items-center justify-between">

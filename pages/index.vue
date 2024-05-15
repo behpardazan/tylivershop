@@ -3,8 +3,9 @@
     <HomeStory />
     <HomeMainSlider />
     <HomeCategory />
-    <HomeAdsBanner />
+    
     <HomeBannerCategory />
+    <HomeAdsBanner />
     <HomePopularProducts />
     <HomeAdsBannerOne />
     <HomeLatestProducts />

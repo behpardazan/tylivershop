@@ -52,7 +52,7 @@
                             </NuxtLink>
                         </li>
                        
-                        <li >
+                        <li  class="hidden">
                             <NuxtLink to='/profile/courses' class="cursor-pointer" type="button" :class="profileActivePage == '/profile/courses' ? 'active' : ''"
                                 @click="go2Curses">
                                 <svg class="mx-1" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -142,8 +142,8 @@
                             </NuxtLink>
                         </li>
                       
-                        <li>
-                            <NuxtLink to='/profile/ticket' class="cursor-pointer" type="button" :class="profileActivePage == '/profile/ticket' ? 'active' : ''"
+                        <li class="hidden">
+                            <NuxtLink   to='/profile/ticket' class="cursor-pointer" type="button" :class="profileActivePage == '/profile/ticket' ? 'active' : ''"
                             @click="go2Ticket">
 
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

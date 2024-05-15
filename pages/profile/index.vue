@@ -3,7 +3,7 @@
     <p class="my-2 flex">
       <strong>داشبورد پنل کاربر</strong>
     </p>
-    {{ authStor?.userData }}
+    <!-- {{ authStor?.userData }} -->
     <hr />
     <div role="alert" class="mb-2 mt-4">
       <div class="border border-[#4BB543] rounded bg-green-100 px-4 py-3 text-green-700">
@@ -40,16 +40,16 @@
         </div>
         <div class="info-item">
           <span> نام خانوادگی :</span>
-          <span> {{ authStore?.profile?.lastName }}</span>
+          <span> {{  authStor?.userData?.data?.lastName }}</span>
         </div>
         <div class="info-item">
           <span> نام کاربری ( شماره تماس) :</span>
-          <span> {{ authStore?.profile?.mobile }}</span>
+          <span> {{ authStor?.userData?.data?.mobile }}</span>
         </div>
         <div class="info-item">
           <span> ایمیل:</span>
           <!-- <span > آقا</span> -->
-          <span> {{ authStore?.profile?.email }}</span>
+          <span> {{  authStor?.userData?.data?.email }}</span>
         </div>
         <div class="info-item">
           <span> پست الکترونیک(ایمیل):</span>
@@ -57,7 +57,7 @@
         </div>
       </div>
       <div
-        class="w-2/6 bg-gradient-to-b from-blue-500 to-blue-800 flex items-center justify-center rounded rounded-[10px] m-1 flex-col relative"
+        class="w-2/6 bg-gradient-to-b hidden from-blue-500 to-blue-800 flex items-center justify-center rounded rounded-[10px] m-1 flex-col relative"
       >
         <!-- <img class="w-[100px] h-[100px]" src="/img/wallet.png" /> -->
         <span class="text-white"> موجودی کیف پول: </span>
@@ -243,11 +243,12 @@ const {
 const user = ref();
 const likedProductList = ref();
 const orederData = ref();
-const authStore = ref();
+const authStor = useAuth();
+
 onMounted(() => {
   // getCurrentUser();
   console.log("==========================profile================");
-  console.log(authStore?.userData);
+  console.log(authStore);
   // getLike();
   // getOrder();
 });
