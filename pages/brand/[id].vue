@@ -60,7 +60,7 @@ onMounted(async () => {
     inStock: true,
     sortBy: 0,
     available: true,
-    brandsId: [route.params.id.split("-")[0]],
+    brandIds: [route.params.id.split("-")[0]],
   });
 });
 

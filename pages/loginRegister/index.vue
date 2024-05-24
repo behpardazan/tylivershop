@@ -16,10 +16,10 @@
   <UAlert class="mt-2" v-if="mobileAlert" icon="i-heroicons-command-line" color="red" variant="solid" title="دقت کن"
     description="          فرمت موبایل صحیح نیست!
 " />
-  <button @click="getCode(mobileNUm)"
-    class="bg-yellow-400 hover:bg-yellow-500 focus:bg-yellow-500 p-1 rounded w-full mt-3">
+  <UButton  @click="getCode(mobileNUm)" :loading="loading"
+    class="bg-yellow-400 hover:bg-yellow-500 focus:bg-yellow-500 p-1 rounded w-full mt-3 p-1 py-2 flex justify-center">
     {{ $t("getCode") }}
-  </button>
+  </UButton >
 </div>
 <div class="loginPassword flex items-center flex-col align-center hidden">
   <h1>{{ $t("password") }}</h1>
@@ -34,7 +34,7 @@
   </button>
 </div>
 
-<div v-if="authStor?.userDetailData?.code == authStor?.state?.login"
+<div v-if="authStor?.userDetailData?.code == authStor?.state?.login || authStor?.userDetailData?.code == authStor?.state?.register"
   class="getCode flex items-center flex-col align-center">
   <h1>{{ $t("code") }}</h1>
 
@@ -59,10 +59,12 @@
     <input id="inpu4" class="border border-gray-300 p-1 rounded w-[50px] px-5" maxlength="1" type="text"
       v-model="pin4" />
   </div>
-  <button @click="signIn(mobileNUm, pin1 + pin2 + pin3 + pin4)"
+  <button v-if="authStor?.userDetailData?.code == authStor?.state?.login"
+   @click="check(mobileNUm, pin1 + pin2 + pin3 + pin4)"
     class="bg-yellow-400 hover:bg-yellow-500 p-1 rounded w-full mt-3">
     {{ $t("submite") }}
   </button>
+  
 </div>
 
 <div class="register flex items-center flex-col align-center hidden">
@@ -83,13 +85,16 @@
   </button>
 </div>
     </div> 
+       <UNotifications />
   </section>
 </template>
 
 <script setup>
+const toast = useToast()
 const authStor = useAuth();
 const mobileAlert = ref(false);
 const mobileNUm = ref();
+const loading = ref(false)
 
 const validateMobile = (mobile) => {
   if (mobile.length > 7) {
@@ -106,10 +111,20 @@ const validateMobile = (mobile) => {
   }
 };
 
-const getCode = (num) => {
+const getCode = async (num) => {
   if (mobileAlert.value == false) {
-    authStor.userDetail(num);
-    authStor.otp(num);
+    loading.value=true
+
+    await authStor.userDetail(num);
+    const otp = await authStor.otp(num);
+
+    if(otp?.isSuccess){
+      loading.value=false
+
+}else{
+  toast.add({ title:otp?.messages[0]?.item1  })
+
+}
   }
 };
 
@@ -118,10 +133,18 @@ const focusNext = (name) => {
   document.querySelector("#" + name).focus();
 };
 
-const signIn = (num, code) => {
+const check = async(num, code) => {
   if (code.length == 4) {
-    alert("ok");
-    authStor.checkOtp(num, code);
+    // alert("ok");
+    const checkresult = await authStor.checkOtp(num, code);
+    console.log(checkresult);
+    if(checkresult.isSuccess){
+      await authStor.signIn(num, code)
+    }else{
+      toast.add({ title:checkresult?.messages[0]?.item1  })
+
+    }
+    
     //authStor.signIn(num, code);
   }
 };

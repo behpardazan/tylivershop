@@ -23,7 +23,8 @@
     "searchIn": "Search In",
     "basket": " basket",
     "add2basket": " Add to Basket",
-
+    "wait": "please wait",
+    "add2basketLoginMessage": "My dear friend, you must log in to your account to buy. I will help you enter",
     "category": "category ",
     "shoppingByCategory": "ُShopping  by category",
     "latestProducts": "Latest Products",

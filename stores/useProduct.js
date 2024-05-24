@@ -103,5 +103,59 @@ export const useProducts = defineStore("productsStore", {
                 console.log(error);
             }
         },
+        async getProductPictures(id) {
+            // console.log(id);
+            try {
+
+                const req = await $fetch("/api/products/productItemPicture", {
+                    method: "GET",
+                    query: {
+                        ProductId: id
+                    }
+                });
+                // console.log(req);
+                // this.data = req;
+                return req
+
+            } catch (error) {
+                console.log("ERROR fromcontact store:" + error);
+                console.log(error);
+            }
+        },
+        async productFeatureValue(id) {
+            // console.log(id);
+            try {
+                const list = []
+                const req = await $fetch("/api/products/productFeatureValue", {
+                    method: "GET",
+                    query: {
+                        ProductId: id
+                    }
+                });
+                // console.log(req);
+                // this.data = req;
+                let i = 1;
+                req.list.forEach(element => {
+                    console.log(element);
+                    list.push({
+                        'ردیف': i,
+                        'عنوان': element.name,
+                        'مقدار': element.productFeatureValues[0].name
+                    })
+                    i++;
+                });
+
+                return list
+
+            } catch (error) {
+                console.log("ERROR fromcontact store:" + error);
+                console.log(error);
+            }
+        },
+
+
+
+
+
     },
 });

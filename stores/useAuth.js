@@ -44,6 +44,7 @@ export const useAuth = defineStore("auhStore", {
                     }
                 });
                 console.log(req);
+                return req
 
             } catch (error) {
                 console.log("ERROR fromcontact store:" + error);
@@ -63,7 +64,8 @@ export const useAuth = defineStore("auhStore", {
                     }
                 });
                 console.log(req);
-                this.signIn(num, code)
+                // this.signIn(num, code)
+                return req
 
             } catch (error) {
                 console.log("ERROR fromcontact store:" + error);
@@ -80,6 +82,30 @@ export const useAuth = defineStore("auhStore", {
                         "mobile": num,
                         "code": code
                     },
+
+                })
+                console.log("==== log in ====");
+                console.log(login);
+                if (login.isSuccess) {
+                    this.getCurrentUser()
+                    navigateTo("/")
+
+                } else {
+                    errors.value = login.messages
+                }
+
+            } catch (error) {
+                console.log("ERROR:" + error);
+                loading.value = false
+            }
+
+
+        },
+        async signUp(data) {
+            try {
+                const login = await $fetch(('/api/auth/register'), {
+                    method: "POST",
+                    body: data
 
                 })
                 console.log("==== log in ====");
