@@ -30,7 +30,7 @@
           </defs>
         </svg>
 
-        {{ $t("similarProduct") }}</strong
+        {{ $t("relatedProduct") }}</strong
       >
 
       <swiper
@@ -50,7 +50,7 @@
         @slideChange="onSlideChange"
       >
         <swiper-slide
-          v-for="item in data?.list"
+          v-for="item in data?.data?.relatedProductList"
           class="text-center max-w-[250px] min-w-[250px] text-xs hover:bg-gray-100 p-1 py-2 rounded rounded-lg"
         >
           <!-- {{ item }} -->

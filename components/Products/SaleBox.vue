@@ -1,5 +1,6 @@
 <template>
   <div class="saleBox bg-yellow-500 p-3 mt-4 rounded-lg">
+
     <div class="finalPrice text-sm flex items-center justify-between">
       <span class="flex">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -67,13 +68,15 @@
 </template>
 
 <script setup>
+
 const authStor = useAuth();
-const props = defineProps(["price"]);
+const cartStore = useCart();
+const props = defineProps(["price","productId"]);
 const count = ref(1);
 const isOpen = ref(false);
 const mobileAlert = ref(false);
 const mobileNUm = ref();
-const otpCode = ref()
+const otpCode = ref();
 
 const authState=ref('mobile')
 
@@ -93,6 +96,10 @@ const validateMobile = (mobile) => {
 };
 const add2Basket = () => {
   if (authStor?.userData) {
+    cartStore.add2Basket({
+      "cartUpdateType": cartStore.cartStatus.add.id,
+      "productId": props.productId,
+    })
   } else {
     // alert("no");
     isOpen.value = true;

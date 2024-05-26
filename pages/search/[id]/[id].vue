@@ -136,13 +136,14 @@
           <strong>{{ $t("oldPrice") }}:</strong><del>{{ data?.data?.price?.toLocaleString() }}</del>
           <span> {{ $t("toman") }}</span>
         </p> -->
-      <ProductsSaleBox :price="data?.data?.price" />
+      <ProductsSaleBox :productId="data?.data?.id" :price="data?.data?.price" />
         
       </div>
       <div class="info-box"></div>
     </div>
   </section>
-  <ProductsSimilarProducts :similarData="{ categoryId: data?.data?.category?.id, productId: data?.data?.id }" />
+  <ProductsRelatedProducts 
+  :similarData="{ id:  data?.data?.id }" />
 
   <div class="container">
     <div class="details p-2 text-justify">
@@ -347,10 +348,8 @@
 </div>
   </div>
 
-  <!-- <ProductsRelatedProducts
-    :similarData="{ categoryId: data?.data?.category?.id, productId: data?.data?.id }"
-  /> -->
-  <!-- {{ data?.data }} -->
+  <ProductsSimilarProducts :similarData="{ categoryId: data?.data?.category?.id, productId: data?.data?.id }" />
+
 </template>
 
 <script setup>

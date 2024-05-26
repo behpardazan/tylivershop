@@ -95,7 +95,7 @@
       </NuxtLink>
     </div>
     <div
-      class="toolbar lg:static py-1 lg:py-0 text-sm fixed bottom-0 right-0 w-full bg-gray-200 z-10"
+      class="toolbar dark:text-black lg:static py-1 lg:py-0 text-sm fixed bottom-0 right-0 w-full bg-gray-200 z-10"
     >
       <div
         class="container flex items-center justify-around lg:justify-start min-h-[20px]"
@@ -161,7 +161,7 @@
           </span>
         </nuxt-link>
         <NuxtLink
-          class="px-1 flex flex-col items-center lg:border-s border-dotted border-gray-400 lg:ps-4 lg:ms-4 lg:hidden"
+          class=" dark:text-black  px-1 flex flex-col items-center lg:border-s border-dotted border-gray-400 lg:ps-4 lg:ms-4 lg:hidden"
           to="/loginRegister"
           v-else
         >

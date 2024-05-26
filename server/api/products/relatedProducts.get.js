@@ -2,7 +2,8 @@ export default defineEventHandler(async(event)=>{
     const {public:{baseUrl}} = useRuntimeConfig()
     console.log("event");
     const query = getQuery(event);
-    console.log(query)
+    console.log("rrrrrreeeeeeeeeeeelatedddddddddddddddddddd")
+    console.log(`${baseUrl}/api/ProductRelate/${query.id}`)
     try {
         const data = await $fetch(`${baseUrl}/api/ProductRelate/${query.id}` , {
             method: 'GET',

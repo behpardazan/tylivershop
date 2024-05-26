@@ -15,7 +15,7 @@ export const useBanner = defineStore("bannerStore", {
                 "sortBy": 1,
                 "available": true
             },
-            twoBanner: {
+            fourBanner: {
                 CategoryLabel: 'towbanner',
                 "sortBy": 1,
                 "available": true

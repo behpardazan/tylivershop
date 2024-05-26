@@ -39,7 +39,7 @@ const {
   const result = ref();
   
   onMounted(async()=>{
-      result.value = await bannerStore.getBanner(bannerStore.twoBanner);
+      result.value = await bannerStore.getBanner(bannerStore.fourBanner);
   
   })
 </script>

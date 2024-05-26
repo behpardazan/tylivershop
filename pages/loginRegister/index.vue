@@ -34,7 +34,9 @@
   </button>
 </div>
 
-<div v-if="authStor?.userDetailData?.code == authStor?.state?.login || authStor?.userDetailData?.code == authStor?.state?.register"
+<div v-if="authStor?.userDetailData?.code == authStor?.state?.login ||
+           authStor?.userDetailData?.code == authStor?.state?.register &&
+           signUp!=true"
   class="getCode flex items-center flex-col align-center">
   <h1>{{ $t("code") }}</h1>
 
@@ -59,28 +61,36 @@
     <input id="inpu4" class="border border-gray-300 p-1 rounded w-[50px] px-5" maxlength="1" type="text"
       v-model="pin4" />
   </div>
-  <button v-if="authStor?.userDetailData?.code == authStor?.state?.login"
+  <button
    @click="check(mobileNUm, pin1 + pin2 + pin3 + pin4)"
-    class="bg-yellow-400 hover:bg-yellow-500 p-1 rounded w-full mt-3">
+    class="bg-yellow-400 hover:bg-yellow-500 dark:text-black p-1 rounded w-full mt-3">
     {{ $t("submite") }}
   </button>
   
 </div>
 
-<div class="register flex items-center flex-col align-center hidden">
+<div v-if="signUp" class="register flex items-center flex-col align-center ">
   <h1>{{ $t("register") }}</h1>
   <p class="text-sm text-gray-400">{{ $t("registerMessage") }}</p>
   <label class="me-auto mt-3" for="">{{ $t("name") }}:</label>
   <input class="border border-gray-300 p-1 rounded w-full mt-2" type="text" 
-  :placeholder="$t('namePlaceHolder')" />
+  :placeholder="$t('namePlaceHolder')" v-model="signUpData.firstName" />
+  <input class="border border-gray-300 p-1 rounded w-full mt-2" type="text" 
+   v-model="signUpData.lastName" />
   <label class="me-auto mt-3" for="">{{ $t("email") }}:</label>
   <input class="border border-gray-300 p-1 rounded w-full mt-2" type="text" 
-  :placeholder="$t('emailPlaceHolder')" />
+  :placeholder="$t('emailPlaceHolder')" v-model="signUpData.email" />
+  <label class="me-auto mt-3" for="">{{ $t("mobile") }}:</label>
+  <input class="border border-gray-300 p-1 rounded w-full mt-2" type="text" 
+  :placeholder="$t('emailPlaceHolder')" readonlyv-model="signUpData.mobile" />
   <label class="me-auto mt-3" for="">{{ $t("password") }}:</label>
-  <input class="border border-gray-300 p-1 rounded w-full mt-2" type="password" />
+  <input class="border border-gray-300 p-1 rounded w-full mt-2"
+    v-model="signUpData.password" type="password" />
   <label class="me-auto mt-3" for="">{{ $t("rePassword") }}:</label>
-  <input class="border border-gray-300 p-1 rounded w-full mt-2" type="password" >
-        <button class=" bg-yellow-400 hover:bg-yellow-500 p-1 rounded w-full mt-3">
+  <input class="border border-gray-300 p-1 rounded w-full mt-2"
+     type="password" >
+        <button @click="doSignUp()"
+        class="dark:text-black bg-yellow-400 hover:bg-yellow-500 p-1 rounded w-full mt-3">
   {{ $t("submite") }}
   </button>
 </div>
@@ -95,6 +105,20 @@ const authStor = useAuth();
 const mobileAlert = ref(false);
 const mobileNUm = ref();
 const loading = ref(false)
+const signUp = ref(false)
+const pin1=ref()
+const pin2=ref()
+const pin3=ref()
+const pin4=ref()
+const signUpData = ref({
+  "mobile": "",
+  "email": "",
+  "firstName": "",
+  "lastName": "",
+  "password": "",
+  "twoFactorEnabled": false,
+  "code": ""
+})
 
 const validateMobile = (mobile) => {
   if (mobile.length > 7) {
@@ -139,7 +163,12 @@ const check = async(num, code) => {
     const checkresult = await authStor.checkOtp(num, code);
     console.log(checkresult);
     if(checkresult.isSuccess){
-      await authStor.signIn(num, code)
+      if(authStor?.userDetailData?.code == authStor?.state?.login){
+        await authStor.signIn(num, code)
+
+      }else{
+        signUp.value=true
+      }
     }else{
       toast.add({ title:checkresult?.messages[0]?.item1  })
 
@@ -148,6 +177,16 @@ const check = async(num, code) => {
     //authStor.signIn(num, code);
   }
 };
+
+const doSignUp =()=>{
+  console.log(mobileNUm.value);
+  console.log(pin1.value);
+  signUpData.value.mobile = mobileNUm.value
+  signUpData.value.code = pin1.value+pin2.value+pin3.value+pin4.value
+  console.log(signUpData.value);
+  authStor.signUp(signUpData.value)
+  
+}
 onMounted(() => {
   console.log(authStor);
 });

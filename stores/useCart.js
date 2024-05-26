@@ -1,11 +1,11 @@
 import { defineStore } from 'pinia'
 
-export const useCartStore = defineStore('cartStore', {
+export const useCart = defineStore('cartStore', {
     // arrow function recommended for full type inference
     state: () => {
         return {
             itemCount: 0,
-            cart: {
+            cartStatus: {
                 none: {
                     id: 0
                 },
@@ -65,10 +65,7 @@ export const useCartStore = defineStore('cartStore', {
 
             }
         },
-        async add2Basket = (status) => {
-            loading.value = true;
-            console.log(authStore);
-            if (authStore.profile) {
+        async add2Basket (status) {
 
                 try {
                     const response = await $fetch("/api/cart/cart", {
@@ -86,15 +83,7 @@ export const useCartStore = defineStore('cartStore', {
                 } catch (error) {
                     // console.log(error);
                 }
-            } else {
-                toast.error("برای خرید باید ابتدا وارد حساب شوید", {
-                    position: "top-right",
-                    timeout: 5000,
-                });
-                navigateTo("/authorize/login");
-                authStore.backUrl = route.fullPath;
-            }
-        };
+            } 
 
 
     },
