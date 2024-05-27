@@ -7,7 +7,7 @@ export const useCart = defineStore('cartStore', {
             itemCount: 0,
             cartStatus: {
                 none: {
-                    id: 0
+                    id: 0//get count (0 or 13)
                 },
                 add: {
                     id: 1
@@ -29,9 +29,13 @@ export const useCart = defineStore('cartStore', {
                 },
                 setOrder: {
                     id: 10
+                },
+                getCart: {
+                    id: 14
                 }
             },
             cart: null
+            //if get "code: 1" in result you most login
         }
     },
     actions: {

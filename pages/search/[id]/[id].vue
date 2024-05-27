@@ -128,7 +128,7 @@
           {{ $t("QR") }}
         </nuxt-link>
       </div>
-        <p>
+        <p v-if="data?.data?.quantity">
           <strong>{{ $t("price") }}:</strong>{{ data?.data?.price?.toLocaleString() }}
           <span class="text-gray-500"> {{ $t("toman") }}</span>
         </p>
@@ -136,8 +136,13 @@
           <strong>{{ $t("oldPrice") }}:</strong><del>{{ data?.data?.price?.toLocaleString() }}</del>
           <span> {{ $t("toman") }}</span>
         </p> -->
-      <ProductsSaleBox :productId="data?.data?.id" :price="data?.data?.price" />
-        
+      <ProductsSaleBox v-if="data?.data?.quantity" :productId="data?.data?.id" :price="data?.data?.price" />
+       
+        <div v-else class="border border-2 text-red-600 p-5 rounded text-center border-red-600 bg-red-200">
+
+          ناموجود
+          
+        </div>
       </div>
       <div class="info-box"></div>
     </div>
@@ -363,12 +368,17 @@ const pictureList=ref();
 const route = useRoute();
 const count = ref(1);
 const commentText = ref("");
+const baskeId = useCookie('baskeId')
 const { data, pending, error, refresh } = await useFetch("/api/products/productItem", {
   query: { id: route.params.id.split("-")[0] },
 });
 
 
 onMounted(async ()=>{
+  if(!baskeId.value){
+    baskeId.value=route.params.id.split("-")[0]
+
+  }
    pictureList.value=await productsStore.getProductPictures(route.params.id.split("-")[0])
    productFeature.value=await productsStore.productFeatureValue(route.params.id.split("-")[0])
    console.log("=============================");
