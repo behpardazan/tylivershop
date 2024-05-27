@@ -95,14 +95,18 @@ const validateMobile = (mobile) => {
   }
 };
 const add2Basket = () => {
-  if (authStor?.userData) {
-    cartStore.add2Basket({
+  cartStore.add2Basket({
       "cartUpdateType": cartStore.cartStatus.add.id,
       "productId": props.productId,
     })
-  } else {
-    // alert("no");
-    isOpen.value = true;
-  }
+  // if (authStor?.userData) {
+  //   cartStore.add2Basket({
+  //     "cartUpdateType": cartStore.cartStatus.add.id,
+  //     "productId": props.productId,
+  //   })
+  // } else {
+  //   // alert("no");
+  //   isOpen.value = true;
+  // }
 };
 </script>

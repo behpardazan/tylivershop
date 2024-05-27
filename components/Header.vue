@@ -61,7 +61,33 @@
             class="relative inline-flex rounded-full h-4 w-4 bg-rose-500 flex items-center text-white justify-center"
             >5</span
           >
+
+
         </span>
+        <div class="absolute top-[100%] left-[0] border bg-gray-100 overflow-hidden
+         rounded border w-[250px] border-yellow-700 p-0 z-10">
+          <div class="box p-1">
+            <div v-for="item in 2" class=" bg-white cart-item mb-1 border flex items-center rounded">
+            <img class="w-[90px] h-[90px]  object-contain me-1" src="/img/about.jpg" />
+            <div class="cart-info">
+              <span>
+              آیتم اول سفارش
+            </span>
+            
+            <strong class="block w-full">250.0000 تومان</strong></div>
+          </div>
+          
+          </div>
+          
+        <div class="priceBox bg-yellow-500 p-2 flex items-center justify-between border-yellow-700 border-t ">
+          مبلغ پرداختی: 2750000 تومان
+
+          <nuxt-link class="w-[30px] h-[30px] rounded flex items-center justify-center border-yellow-700 border" to="#">
+            <svg data-v-a81738bd="" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" style=""><path data-v-a81738bd="" fill="#888888" d="M20 11H7.83l5.59-5.59L12 4l-8 8l8 8l1.41-1.41L7.83 13H20z" style="fill: #d2a107;"></path></svg>
+          </nuxt-link>
+          </div>
+        </div>
+
       </div>
       <div
         class="account hidden lg:flex text-xs items-center w-[150px] ps-2 justify-center"
