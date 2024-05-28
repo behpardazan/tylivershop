@@ -74,7 +74,7 @@ onMounted(async () => {
 
   // sliceData.value = splitData(data?.value?.list, 3);
   // console.log(await productsStore.getProducts(productsStore.popular));
-  console.log("related");
-  console.log(props?.data);
+  // console.log("related");
+  // console.log(props?.data);
 });
 </script>

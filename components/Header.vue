@@ -279,7 +279,11 @@
           :popper="{ arrow: true }"
         >
           <nuxt-link class="px-1 ms-auto flex items-center lg:ps-4 support" to="#">
-            <span>09125012563</span>
+            <span>
+              {{ 
+                detailStore?.listChecker('mobile',detailStore.data?.list)
+               }}
+            </span>
 
             <svg
               class="ms-2"
@@ -336,7 +340,7 @@
 const route = useRoute();
 const categoryStore = useCategory();
 const authStor = useAuth();
-
+const detailStore = useDetails();
 const isOpen = ref(false);
 const isOpenDesktop = ref(false);
 const links = [
@@ -381,6 +385,8 @@ const items = [
 onMounted(async () => {
   await categoryStore.getCategory();
   await authStor.getCurrentUser();
+  await detailStore.getDetails(detailStore.conection)
+
 });
 </script>
 

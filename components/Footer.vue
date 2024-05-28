@@ -67,6 +67,13 @@
   </footer>
 </template>
 
-<script setup></script>
+<script setup>
+  const detailStore = useDetails();
+  
+  onMounted(async()=>{
+
+    
+  })
+</script>
 
 <style lang="scss" scoped></style>

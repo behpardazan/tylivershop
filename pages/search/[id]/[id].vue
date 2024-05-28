@@ -368,17 +368,14 @@ const pictureList=ref();
 const route = useRoute();
 const count = ref(1);
 const commentText = ref("");
-const baskeId = useCookie('baskeId')
+
 const { data, pending, error, refresh } = await useFetch("/api/products/productItem", {
   query: { id: route.params.id.split("-")[0] },
 });
 
 
 onMounted(async ()=>{
-  if(!baskeId.value){
-    baskeId.value=route.params.id.split("-")[0]
-
-  }
+ 
    pictureList.value=await productsStore.getProductPictures(route.params.id.split("-")[0])
    productFeature.value=await productsStore.productFeatureValue(route.params.id.split("-")[0])
    console.log("=============================");

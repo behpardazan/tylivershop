@@ -89,7 +89,7 @@ const splitData = (myList, chunkSize) => {
     groupedLists.push(myList.slice(i, i + chunkSize));
   }
 
-  console.log(groupedLists);
+  // console.log(groupedLists);
   return groupedLists;
 };
 </script>

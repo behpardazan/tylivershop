@@ -38,6 +38,7 @@
       <!-- {{ authStor?.userData }} -->
       {{ $t("add2basket") }}
     </button>
+    <UNotifications />
     <UModal v-model="isOpen">
       <div class="p-4">
         <UAlert icon="i-heroicons-command-line" color="blue" variant="solid" :description="$t('add2basketLoginMessage')"
@@ -64,11 +65,12 @@
         </div>
       </div>
     </UModal>
+
   </div>
 </template>
 
 <script setup>
-
+const toast = useToast()
 const authStor = useAuth();
 const cartStore = useCart();
 const props = defineProps(["price","productId"]);
@@ -77,8 +79,12 @@ const isOpen = ref(false);
 const mobileAlert = ref(false);
 const mobileNUm = ref();
 const otpCode = ref();
-
 const authState=ref('mobile')
+const baskeId = useCookie('baskeId')
+const cart=ref()
+// onMounted(() => {
+   
+// })
 
 const validateMobile = (mobile) => {
   if (mobile.length > 7) {
@@ -94,11 +100,24 @@ const validateMobile = (mobile) => {
     return false;
   }
 };
-const add2Basket = () => {
-  cartStore.add2Basket({
+const add2Basket =async () => {
+
+
+  cart.value = await cartStore.add2Basket({
       "cartUpdateType": cartStore.cartStatus.add.id,
       "productId": props.productId,
-    })
+  })
+console.log(cart.value);
+  if(cart.value.isSuccess){
+    toast.add({ title: 'با موفقیت به سبد اضافه شد' })
+
+    if(!baskeId.value){
+    baskeId.value=cart?.value?.data
+
+  }
+  }
+
+  // **** sample code for check if login add to basket ****
   // if (authStor?.userData) {
   //   cartStore.add2Basket({
   //     "cartUpdateType": cartStore.cartStatus.add.id,

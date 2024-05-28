@@ -79,8 +79,9 @@ export const useCart = defineStore('cartStore', {
                     console.log("---- cart --------");
                     console.log(response);
                     if (response.isSuccess) {
-                        console.log("successfully added");
-                        this.cart = response;
+                        // console.log("successfully added");
+                        // this.cart = response;
+                        return response
                     }
                     // console.log("================= add products cart response ========");
                     // console.log(response);
