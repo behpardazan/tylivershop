@@ -5,6 +5,8 @@ export const useDetails = defineStore("detailsStore", {
     state: () => {
         return {
             data: null,
+            mobile:null,
+            address:null,
             conection: {
                 CategoryLabel: 'conection',
                 "sortBy": 1,
@@ -56,9 +58,13 @@ export const useDetails = defineStore("detailsStore", {
         async listChecker(name,list){
             if(list?.length > 0){
                 list?.forEach(element => {
-                    if(element.label == name){
-                        console.log(element.value);
-                        return element.value
+                    if(element.label == name && name =='mobile'){
+                        // console.log(element.value);
+                        this.mobile = element.value
+                    }
+                     if(element.label == name && name =='address'){
+                        // console.log(element.value);
+                        this.address = element.value
                     }
                 });
             }

@@ -27,13 +27,29 @@
           <p class="flex items-start">
             <UIcon class="text-lg min-w-[20px]" name="i-heroicons-map-pin-16-solid" />
 
-            <span>فروشگاه مرکزی: میدان سیلان خیابان سبلان شمالی کوچه امیدی پلاک 642</span>
+            <span>فروشگاه مرکزی: {{ detailStore?.address }}</span>
           </p>
         </div>
       </div>
 
-      <div class="links text-sm flex flex-wrap text-justify p-1">
-        <ul class="p-2 w-1/2" v-for="item in 2">
+      <div class="links text-sm flex flex-wrap text-justify p-1 min-w-[300px]">
+        <ul class="p-2 w-1/2" >
+          <li><strong>لینکهای مفید </strong></li>
+          <li >
+            <nuxt-link class="p-1 block" to="/about">درباره ما </nuxt-link>
+          </li>
+          <li >
+            <nuxt-link class="p-1 block" to="/contact">تماس با ما </nuxt-link>
+          </li>
+          <li >
+            <nuxt-link class="p-1 block" to="/rule">قوانین ما </nuxt-link>
+          </li>
+          <li >
+            <nuxt-link class="p-1 block" to="/blog">مقالات ما </nuxt-link>
+          </li>
+          
+        </ul>
+        <ul class="p-2 w-1/2" >
           <li><strong>دسترسی سریع</strong></li>
           <li v-for="item in 5">
             <nuxt-link class="p-1 block" to="#">عنوان لینک</nuxt-link>

@@ -281,7 +281,7 @@
           <nuxt-link class="px-1 ms-auto flex items-center lg:ps-4 support" to="#">
             <span>
               {{ 
-                detailStore?.listChecker('mobile',detailStore.data?.list)
+                detailStore?.mobile
                }}
             </span>
 
@@ -385,7 +385,10 @@ const items = [
 onMounted(async () => {
   await categoryStore.getCategory();
   await authStor.getCurrentUser();
-  await detailStore.getDetails(detailStore.conection)
+  await detailStore.getDetails(detailStore.conection);
+  await detailStore?.listChecker('mobile',detailStore.data?.list)
+  await detailStore?.listChecker('address',detailStore.data?.list)
+
 
 });
 </script>
