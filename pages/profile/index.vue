@@ -247,8 +247,8 @@ const authStor = useAuth();
 
 onMounted(() => {
   // getCurrentUser();
-  console.log("==========================profile================");
-  console.log(authStore);
+  // console.log("==========================profile================");
+  // console.log(authStore);
   // getLike();
   // getOrder();
 });

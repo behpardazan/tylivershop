@@ -19,76 +19,95 @@ export const useCart = defineStore('cartStore', {
                     id: 5
                 },
                 setMerchant: {
-                    id: 8
+                    id: 9
                 },
                 setRebate: {
-                    id: 6
-                },
-                removeRebate: {
                     id: 7
                 },
+                removeRebate: {
+                    id: 8
+                },
                 setOrder: {
-                    id: 10
+                    id: 11
+                },
+                getCartCount: {
+                    id: 13
                 },
                 getCart: {
                     id: 14
+                },
+                getDelivery: {
+                    id: 15
+                },
+                setDelivery: {
+                    id: 6
                 }
             },
-            cart: null
+            cart: null,
+            cartCount: 0,
+            productIdCount:[]
             //if get "code: 1" in result you most login
         }
     },
     actions: {
 
-        async getItemCount() {
-            try {
-                this.loading = true;
-                const response = await $fetch('/api/cart/cart', {
-                        method: 'POST',
-                        body: {
-                            "cartUpdateType": 13,
-                            "returnCart": true,
-                            "userId": 0,
-                            "uniqueId": "",
-                            "addressId": 0,
-                            "rebateCode": "",
-                            "deliveryId": 0,
-                            "merchantId": 0,
-                            "productId": 0
+        async getCartCount (status) {
 
-                        }
-                    })
-                    // console.log("---------------------------------------------- cart ------------------------------------");
-                    // console.log(response);
+            try {
+                const response = await $fetch("/api/cart/cart", {
+                    method: "POST",
+                    body: status,
+                });
+               
                 if (response.isSuccess) {
-                    this.itemCount = response.data.itemCount
-                    this.cart = response.data
+                    // console.log("successfully added");
+                    this.cartCount = response.data.itemCount;
+                    this.cart = response;
+                       
+
+
+                        response?.data?.cartItems.forEach(element => {
+                            this.productIdCount.push({"id":element?.id,"productId":element?.productId,"count": element?.count})
+                            
+                        });
+
                 }
             } catch (error) {
-                console.log("error get cart :", error);
-
+                // console.log(error);
             }
-        },
-        async add2Basket (status) {
+    } ,
+        async getCart (status) {
 
                 try {
                     const response = await $fetch("/api/cart/cart", {
                         method: "POST",
                         body: status,
                     });
-                    console.log("---- cart --------");
-                    console.log(response);
+                    // console.log("---- cart --------");
+                    // console.log(response); 
                     if (response.isSuccess) {
-                        // console.log("successfully added");
-                        // this.cart = response;
                         return response
+                        console.log("successfully called");
+                        this.cart = response;
+                       
+
+
+                        response?.data?.cartItems.forEach(element => {
+                            this.productIdCount.push({"id":element?.id,"productId":element?.productId,"count": element?.count})
+                            
+                        });
+
+                        // console.log(this.productIdCount);
+
+                        // this.cartCount = response.data.itemCount
+
                     }
                     // console.log("================= add products cart response ========");
                     // console.log(response);
                 } catch (error) {
                     // console.log(error);
                 }
-            } 
+        } 
 
 
     },

@@ -74,13 +74,14 @@ export const useAuth = defineStore("auhStore", {
         },
         //sign in 
 
-        async signIn(num, code) {
+        async signIn(num, code,catCode) {
             try {
                 const login = await $fetch(('/api/auth/login'), {
                     method: "POST",
                     body: {
                         "mobile": num,
-                        "code": code
+                        "code": code,
+                        "cartCode": catCode
                     },
 
                 })

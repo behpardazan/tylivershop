@@ -208,18 +208,11 @@
 
         const authStore = useAuth()
 
-
             // add store
             let MainStore = ref(null);
             const token = useCookie('token')
             const logOut = () => {
-                token.value =""
-
-                authStore.$patch({
-                                    firstName: null,
-                                    lastName: null,
-                            
-                                })
+                token.value = ''
 
                 authStore.$reset();
 

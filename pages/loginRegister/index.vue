@@ -106,6 +106,7 @@ const mobileAlert = ref(false);
 const mobileNUm = ref();
 const loading = ref(false)
 const signUp = ref(false)
+const baskeId = useCookie('baskeId')
 const pin1=ref()
 const pin2=ref()
 const pin3=ref()
@@ -164,7 +165,12 @@ const check = async(num, code) => {
     console.log(checkresult);
     if(checkresult.isSuccess){
       if(authStor?.userDetailData?.code == authStor?.state?.login){
-        await authStor.signIn(num, code)
+       
+        if(baskeId.value){
+          await authStor.signIn(num, code, baskeId.value)
+        }else{
+          await authStor.signIn(num, code)
+        }
 
       }else{
         signUp.value=true

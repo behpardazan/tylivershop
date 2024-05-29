@@ -13,7 +13,7 @@
         <UIcon name="i-heroicons-bars-3-16-solid" />
       </div>
 
-      <div
+      <div 
         class="basket hidden relative lg:flex text-xs items-center
          w-[150px] border-s ps-2 justify-center py-4"
       >
@@ -59,29 +59,42 @@
             class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"
           ></span>
           <span
-            class="relative inline-flex rounded-full h-4 w-4 bg-rose-500 flex items-center text-white justify-center"
-            >5</span
+            class="relative  overflow-hidden
+             rounded-full h-4 min-w-4 bg-rose-500 
+             flex items-center text-white justify-center"
+            >{{cartStore?.cartCount}}</span
           >
 
 
         </span>
-        <div class="cartsummery absolute top-[100%] left-[0] border bg-gray-100 
-         rounded border w-[300px] border-yellow-700 p-0 z-10">
-          <div class="box p-1">
-            <div v-for="item in 2" class=" bg-white cart-item mb-1 border flex items-center rounded">
-            <img class="w-[90px] h-[90px]  object-contain me-1" src="/img/about.jpg" />
+        <div class="cartsummery absolute top-[100%]  left-[0] 
+        border bg-gray-100 
+         rounded border w-[300px]
+          border-yellow-700 p-0 z-10">
+          <div class="box p-1 h-[300px] overflow-scroll">
+          {{ cartStore?.cart }}
+            <div v-for="item in cartStore?.cart?.data?.cartItems" class=" bg-white cart-item mb-1 border flex items-center rounded">
+            <img class="w-[90px] h-[90px]  object-contain me-1" 
+            :src="showImageBaseUrl+item?.product?.picture?.url" />
             <div class="cart-info">
               <span class="text-[15px]">
-              آیتم اول سفارش
+              
+                {{ item?.product?.name }}
+
             </span>
             
-            <span class="block mt-3 w-full">250.0000 تومان</span></div>
+            <span class="block mt-3 w-full">
+              {{ item?.product?.price.toLocaleString() }}
+              تومان</span></div>
           </div>
           
           </div>
           
         <div class="priceBox bg-yellow-500 p-2 flex items-center justify-between border-yellow-700 border-t ">
-          مبلغ پرداختی: <strong class="text-lg">2750000</strong> تومان
+          مبلغ پرداختی: 
+          <strong class="text-lg">
+          {{cartStore?.cart?.data?.totalPrice?.toLocaleString()}}
+          </strong> تومان
 
           <nuxt-link class="w-[30px] h-[30px] rounded flex items-center
            justify-center border-yellow-700 border bg-white" to="#">
@@ -337,12 +350,18 @@
 </template>
 
 <script setup>
+const {
+  public: { showImageBaseUrl },
+} = useRuntimeConfig();
 const route = useRoute();
 const categoryStore = useCategory();
 const authStor = useAuth();
+const cartStore = useCart();
 const detailStore = useDetails();
 const isOpen = ref(false);
 const isOpenDesktop = ref(false);
+const baskeId = useCookie('baskeId')
+
 const links = [
   {
     label: `حساب کاربری`,
@@ -381,16 +400,35 @@ const items = [
     content: "Finally, this is the content for Tab3",
   },
 ];
-
+const cart = ref()
 onMounted(async () => {
   await categoryStore.getCategory();
   await authStor.getCurrentUser();
   await detailStore.getDetails(detailStore.conection);
   await detailStore?.listChecker('mobile',detailStore.data?.list)
   await detailStore?.listChecker('address',detailStore.data?.list)
+  if(baskeId.value){
+    cart.value = await cartStore?.getCart({
+      "cartUpdateType": cartStore.cartStatus.getCart.id,
+      "uniqueId": baskeId.value,
+  })
 
 
+  cartStore.cartCount = cart.value?.data?.itemCount
+  }
+  
+
+  
 });
+
+//*** اگر بخوام با هاور دیتاهارو بگیرم*** */
+// @mouseover="getIems()"
+// const getIems = async () =>{
+//   await cartStore.getCart({
+//       "cartUpdateType": cartStore.cartStatus.getCart.id,
+//       "uniqueId": baskeId.value,
+//   })
+// }
 </script>
 
 <style>

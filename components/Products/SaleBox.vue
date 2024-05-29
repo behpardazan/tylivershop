@@ -33,9 +33,10 @@
       </button>
     </div>
 
-    <button class="bg-green-600 hover:bg-green-700 rounded p-2 mt-2 text-white w-full"
-      :class="{ 'cursor-no-drop ': !authStor?.userData }" @click="add2Basket">
-      <!-- {{ authStor?.userData }} -->
+    <button class="bg-green-600 hover:bg-green-700 rounded p-2 mt-2 text-white w-full" @click="add2Basket">
+      <!-- {{ authStor?.userData }}
+      
+      :class="{ 'cursor-no-drop ': !authStor?.userData }" -->
       {{ $t("add2basket") }}
     </button>
     <UNotifications />
@@ -73,18 +74,18 @@
 const toast = useToast()
 const authStor = useAuth();
 const cartStore = useCart();
-const props = defineProps(["price","productId"]);
+const props = defineProps(["price", "productId"]);
 const count = ref(1);
 const isOpen = ref(false);
 const mobileAlert = ref(false);
 const mobileNUm = ref();
 const otpCode = ref();
-const authState=ref('mobile')
+const authState = ref('mobile')
 const baskeId = useCookie('baskeId')
-const cart=ref()
-// onMounted(() => {
-   
-// })
+const cart = ref()
+onMounted(() => {
+  // baskeId.value=""
+})
 
 const validateMobile = (mobile) => {
   if (mobile.length > 7) {
@@ -100,22 +101,48 @@ const validateMobile = (mobile) => {
     return false;
   }
 };
-const add2Basket =async () => {
+const add2Basket = async () => {
 
 
-  cart.value = await cartStore.add2Basket({
+
+
+  if (!baskeId.value) {
+    baskeId.value=""
+    cart.value = await cartStore.getCart({
       "cartUpdateType": cartStore.cartStatus.add.id,
       "productId": props.productId,
-  })
-console.log(cart.value);
-  if(cart.value.isSuccess){
-    toast.add({ title: 'با موفقیت به سبد اضافه شد' })
+    })
 
-    if(!baskeId.value){
-    baskeId.value=cart?.value?.data
+    console.log(cart.value);
 
+    if (cart.value?.isSuccess) {
+      toast.add({ title: 'با موفقیت به سبد اضافه شد' })
+      baskeId.value = cart?.value?.data;
+      setTimeout(() => {
+        cartStore.getCartCount({
+          "cartUpdateType": cartStore.cartStatus.getCart.id,
+          "uniqueId": baskeId.value,
+        })
+      }, 5000);
+    }
+  } else {
+    cart.value = await cartStore.getCart({
+      "cartUpdateType": cartStore.cartStatus.add.id,
+      "productId": props.productId,
+      "uniqueId": baskeId.value
+    })
+    if (cart.value?.isSuccess) {
+      toast.add({ title: 'با موفقیت به سبد اضافه شد' })
+      setTimeout(() => {
+        cartStore.getCartCount({
+          "cartUpdateType": cartStore.cartStatus.getCart.id,
+          "uniqueId": baskeId.value,
+        })
+      }, 5000);
+
+    }
   }
-  }
+
 
   // **** sample code for check if login add to basket ****
   // if (authStor?.userData) {
