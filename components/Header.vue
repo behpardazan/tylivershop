@@ -72,7 +72,7 @@
          rounded border w-[300px]
           border-yellow-700 p-0 z-10">
           <div class="box p-1 h-[300px] overflow-scroll">
-          {{ cartStore?.cart }}
+          <!-- {{ cartStore?.cart }} -->
             <div v-for="item in cartStore?.cart?.data?.cartItems" class=" bg-white cart-item mb-1 border flex items-center rounded">
             <img class="w-[90px] h-[90px]  object-contain me-1" 
             :src="showImageBaseUrl+item?.product?.picture?.url" />
@@ -96,8 +96,8 @@
           {{cartStore?.cart?.data?.totalPrice?.toLocaleString()}}
           </strong> تومان
 
-          <nuxt-link class="w-[30px] h-[30px] rounded flex items-center
-           justify-center border-yellow-700 border bg-white" to="#">
+          <nuxt-link to="/basket" class="w-[30px] h-[30px] rounded flex items-center
+           justify-center border-yellow-700 border bg-white" >
             <svg data-v-a81738bd="" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" style=""><path data-v-a81738bd="" fill="#888888" d="M20 11H7.83l5.59-5.59L12 4l-8 8l8 8l1.41-1.41L7.83 13H20z" style="fill: #d2a107;"></path></svg>
           </nuxt-link>
           </div>

@@ -65,6 +65,8 @@
 
             </div>
         </div>
+
+        <LoginRegisterModal />
     </section>
 </template>
 
