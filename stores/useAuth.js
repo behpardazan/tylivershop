@@ -10,7 +10,9 @@ export const useAuth = defineStore("auhStore", {
                 login: "2",
                 login2tep: "3",
                 register: "1",
-            }
+            },
+            backURL:null
+
         };
     },
 
@@ -89,7 +91,12 @@ export const useAuth = defineStore("auhStore", {
                 console.log(login);
                 if (login.isSuccess) {
                     this.getCurrentUser()
-                    navigateTo("/")
+                    if(!this.backURL){
+                        navigateTo("/")
+
+                    }else{
+                        navigateTo(this.backURL)
+                    }
 
                 } else {
                     errors.value = login.messages

@@ -45,7 +45,7 @@ export const useCart = defineStore('cartStore', {
             },
             cart: null,
             cartCount: 0,
-            productIdCount:[]
+            productIdCount:[],
             //if get "code: 1" in result you most login
         }
     },
@@ -61,8 +61,9 @@ export const useCart = defineStore('cartStore', {
                
                 if (response.isSuccess) {
                     // console.log("successfully added");
-                    this.cartCount = response.data.itemCount;
                     this.cart = response;
+
+                    this.cartCount = response.data.itemCount;
                        
 
 

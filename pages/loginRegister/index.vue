@@ -102,6 +102,7 @@
 <script setup>
 const toast = useToast()
 const authStor = useAuth();
+const route = useRoute();
 const mobileAlert = ref(false);
 const mobileNUm = ref();
 const loading = ref(false)
@@ -194,7 +195,7 @@ const doSignUp =()=>{
   
 }
 onMounted(() => {
-  console.log(authStor);
+  console.log(route);
 });
 </script>
 

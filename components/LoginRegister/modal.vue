@@ -1,5 +1,5 @@
 <template>
-    <UModal >
+    <UModal LoginRegisterModal>
       <div class="p-4">
         <UAlert icon="i-heroicons-command-line" color="blue" variant="solid" :description="$t('add2basketLoginMessage')"
           :title="$t('wait')" />

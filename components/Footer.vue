@@ -56,15 +56,34 @@
           </li>
         </ul>
       </div>
-      <div class="permission text-sm flex items-center justify-center p-1 lg:w-1/3">
+      <div class="permission text-sm flex items-center justify-center p-1 lg:w-1/3 ms-auto">
         <nuxt-link
-          v-for="item in 4"
-          class="w-1/4 p-3 block transition-all hover:p-2"
+          class="w-1/4 p-3 block transition-all hover:p-2 bg-white rounded overflow-hidden m-1"
           to="#"
         >
-          <img class="w-full h-auto" src="/img/logo/logo-black.png" alt="" />
+          <img class="w-full h-[100px] object-contain" src="/img/samandehipng.png" alt="" />
         </nuxt-link>
+        <nuxt-link
+          class="w-1/4 p-3 block transition-all hover:p-2 bg-white rounded overflow-hidden m-1"
+          to="#"
+        >
+          <img class="w-full h-[100px] object-contain" src="/img/enamad-logo.jpg" alt="" />
+        </nuxt-link>
+        <nuxt-link
+          class="w-1/4 p-3 block transition-all hover:p-2 bg-white rounded overflow-hidden m-1"
+          to="#"
+        >
+          <img class="w-full h-[100px] object-contain" src="/img/zarinpall.png" alt="" />
+        </nuxt-link>
+        <nuxt-link
+          class="w-1/4 p-3 block transition-all hover:p-2 bg-white rounded overflow-hidden m-1"
+          to="#"
+        >
+          <img class="w-full h-[100px] object-contain" src="/img/refah.webp" alt="" />
+        </nuxt-link>
+        
       </div>
+      
     </div>
     <div
       class="social text-sm flex items-center justify-center p-1 bg-gradient-to-r from-blue-700 to-cyan-600 p-2 lg:absolute lg:left-0 lg:bottom-0"

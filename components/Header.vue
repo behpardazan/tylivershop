@@ -5,7 +5,7 @@
       v-if="isOpenDesktop == true"
       class="cover bg-[#000000a1] z-10 h-[calc(100vh-144px)] min-w-[100vw] p-2 right-0 fixed bottom-[0]"
     ></div>
-    <div class="container lg:flex-row-reverse flex items-center p-1">
+    <div class="container lg:flex-row-reverse flex items-center p-1 dark: text-black">
       <div
         @click="isOpen = true"
         class="menu lg:hidden w-[50px] min-w-[50px] flex justify-center items-center text-xl h-[50px]"
@@ -67,12 +67,12 @@
 
 
         </span>
-        <div class="cartsummery absolute top-[100%]  left-[0] 
+        <div class="cartsummery absolute top-[100%]  left-[0]  dark:text-black
         border bg-gray-100 
          rounded border w-[300px]
           border-yellow-700 p-0 z-10">
           <div class="box p-1 h-[300px] overflow-scroll">
-          <!-- {{ cartStore?.cart }} -->
+            
             <div v-for="item in cartStore?.cart?.data?.cartItems" class=" bg-white cart-item mb-1 border flex items-center rounded">
             <img class="w-[90px] h-[90px]  object-contain me-1" 
             :src="showImageBaseUrl+item?.product?.picture?.url" />
@@ -408,7 +408,7 @@ onMounted(async () => {
   await detailStore?.listChecker('mobile',detailStore.data?.list)
   await detailStore?.listChecker('address',detailStore.data?.list)
   if(baskeId.value){
-    cart.value = await cartStore?.getCart({
+    cart.value = await cartStore?.getCartCount({
       "cartUpdateType": cartStore.cartStatus.getCart.id,
       "uniqueId": baskeId.value,
   })
