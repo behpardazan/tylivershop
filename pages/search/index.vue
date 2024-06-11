@@ -12,7 +12,7 @@
       <h1>{{ $t("products") }}</h1>
       <div class="flex">
         <div class="lg:w-1/4 hidden lg:block p-2">
-          <div class="bg-white p-2 border">
+          <div class="bg-white p-2 border dark:text-black">
             <ProductsCategory />
             <!-- <div class="stock-box">
               <strong>برند ها</strong>

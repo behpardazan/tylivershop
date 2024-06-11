@@ -71,7 +71,7 @@
         border bg-gray-100 
          rounded border w-[300px]
           border-yellow-700 p-0 z-10">
-          <div class="box p-1 h-[300px] overflow-scroll">
+          <div class="box p-1 h-[300px] overflow-scroll" v-if="cartStore?.cart?.data?.cartItems">
             
             <div v-for="item in cartStore?.cart?.data?.cartItems" class=" bg-white cart-item mb-1 border flex items-center rounded">
             <img class="w-[90px] h-[90px]  object-contain me-1" 
@@ -89,6 +89,9 @@
           </div>
           
           </div>
+
+
+          <img class="w-[150px] h-auto m-auto" v-else src="/img/emptybasket.png" alt="">
           
         <div class="priceBox bg-yellow-500 p-2 flex items-center justify-between border-yellow-700 border-t ">
           مبلغ پرداختی: 

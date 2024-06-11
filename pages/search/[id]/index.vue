@@ -12,7 +12,7 @@
       <h1>{{ $t("products") }}</h1>
       {{ data?.name }}
       <div class="flex">
-        <div class="lg:w-1/4 hidden lg:block p-2">
+        <div class="lg:w-1/4 hidden lg:block p-2 dark:text-black">
           <div class="bg-white p-2 border">
             <ProductsCategory />
             <!-- <div class="stock-box">
