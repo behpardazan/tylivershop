@@ -4,14 +4,15 @@ export default defineEventHandler(async(event)=>{
     const query = getQuery(event);
     console.log(query);
     const token = getCookie(event,'token');
+    const body = await readBody(event);
+
     try {
-        const data = await $fetch(`${baseUrl}/api/EndUser/Address` , {
+        const data = await $fetch(`${baseUrl}/api/EndUser/Address${id=query.id}` , {
             method: 'POST',
             headers: {
                 'Accept': 'text/plain',
                 'Authorization': `Bearer ${token}`
-            },
-            body:body
+            }
  
            
         })

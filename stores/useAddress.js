@@ -32,8 +32,23 @@ export const useAddress = defineStore("addressStore", {
                     method: "POST",
                     body:body
                 });
+
+            } catch (error) {
+                console.log("ERROR fromcontact store:" + error);
+                console.log(error);
+            }
+        },
+        async deleteAddress(id) {
+            // console.log(id);
+            try {
+
+                const req = await $fetch("/api/address/address", {
+                    method: "DELETE",
+                    query:{
+                        id:id
+                    }
+                });
                 console.log(req);
-                this.addressData = req;
 
             } catch (error) {
                 console.log("ERROR fromcontact store:" + error);
