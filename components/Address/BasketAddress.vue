@@ -1,6 +1,7 @@
 <template>
 
     <div class="address border bg-yellow-100 rounded lg:w-2/3 w-full">
+        {{ addressStore?.addressData }}
         <strong class="flex  w-full bg-yellow-300 p-2">مشخصات گیرنده
 
 
@@ -56,60 +57,26 @@
                             </svg>
                             آدرس های من</span>
                         <hr>
-                        <div class="address-item  active p-1 text-sm  mb-1 flex">
+                        <div v-for="item in addressStore?.addressData?.list"
+                        class="address-item  active p-1 text-sm  mb-1 flex" >
                             <div class="status w-[30px]">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
                                     <path fill="#888888"
                                         d="m9.55 18l-5.7-5.7l1.425-1.425L9.55 15.15l9.175-9.175L20.15 7.4z" />
                                 </svg>
                             </div>
-                            <div class="info">
-                                <strong>منزل </strong><sub>(گیرنده سینا)</sub>
-                                <p class="text-sm text-gray-500">تهران - خیابان سهروردی شمالی خیابان خرمشهر فرهاد پلاک 4
+                            <div class="info relative w-full">
+                                <strong>{{item?.name}} </strong><sub>(گیرنده {{item?.firstName}})</sub>
+                                <p class="text-sm text-gray-500">
+                                    
+                                    {{item?.phone}}
+                                </p>
+                                <p class="text-sm text-gray-500">
+                                    
+                                    {{item?.addressValue}}
                                 </p>
 
-                            </div>
-                        </div>
-
-                        <div class="address-item  p-1 text-sm  mb-1 flex">
-                            <div class="status w-[30px]">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
-                                    <path fill="#888888"
-                                        d="m9.55 18l-5.7-5.7l1.425-1.425L9.55 15.15l9.175-9.175L20.15 7.4z" />
-                                </svg>
-                            </div>
-                            <div class="info">
-                                <strong>کافه </strong><sub>(گیرنده سینا)</sub>
-                                <p class="text-sm text-gray-500">تهران - خیابان سهروردی شمالی خیابان خرمشهر فرهاد پلاک 4
-                                </p>
-
-                            </div>
-                        </div>
-                        <div class="address-item  p-1 text-sm  mb-1 flex">
-                            <div class="status w-[30px]">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
-                                    <path fill="#888888"
-                                        d="m9.55 18l-5.7-5.7l1.425-1.425L9.55 15.15l9.175-9.175L20.15 7.4z" />
-                                </svg>
-                            </div>
-                            <div class="info">
-                                <strong>محل کار </strong><sub>(گیرنده سینا)</sub>
-                                <p class="text-sm text-gray-500">تهران - خیابان سهروردی شمالی خیابان خرمشهر فرهاد پلاک 4
-                                </p>
-
-                            </div>
-                        </div>
-                        <div class="address-item  p-1 text-sm  mb-1 flex">
-                            <div class="status w-[30px]">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
-                                    <path fill="#888888"
-                                        d="m9.55 18l-5.7-5.7l1.425-1.425L9.55 15.15l9.175-9.175L20.15 7.4z" />
-                                </svg>
-                            </div>
-                            <div class="info">
-                                <strong>شرکت جدید </strong><sub>(گیرنده سینا)</sub>
-                                <p class="text-sm text-gray-500">تهران - خیابان سهروردی شمالی خیابان خرمشهر فرهاد پلاک 4
-                                </p>
+                                <button class="bg-red-500 p-1 rounded absolute left-0 bottom-0 text-white" >حذف</button>
 
                             </div>
                         </div>
@@ -190,10 +157,19 @@
 </div>
 <div class="w-full lg:w-1/2 p-1">
 
-<UInput icon="i-heroicons-map" size="sm" color="white" :trailing="false"
-    placeholder="استان ..." />
-
-
+<!-- <UInput icon="i-heroicons-map" size="sm" color="white" :trailing="false"
+    placeholder="استان ..." /> -->
+{{ selectedState }}
+    <USelectMenu
+    searchable
+    searchable-placeholder="نام استان..."
+    class="w-full relative"
+    placeholder="نام استان..."
+    :options="state"
+        value-attribute="id"
+    option-attribute="name"
+    v-model="selectedState"
+  />
 
 
 </div>
@@ -225,7 +201,157 @@
 <script setup>
 const showModal = ref(false)
 const addStatus = ref(false)
+const addressStore = useAddress()
+const selectedState = ref()
+const state = [
+{
+      "name": "آذربايجان شرقي",
+      "id": 1
+    },
+    {
+      "name": "آذربايجان غربي",
+      "id": 2
+    },
+    {
+      "name": "اردبيل",
+      "id": 3
+    },
+    {
+      "name": "اصفهان",
+      "id": 4
+    },
+    {
+      "name": "البرز",
+      "id": 5
+    },
+    {
+      "name": "ايلام",
+      "id": 6
+    },
+    {
+      "name": "بوشهر",
+      "id": 7
+    },
+    {
+      "name": "تهران",
+      "id": 8
+    },
+    {
+      "name": "چهارمحال و بختياري",
+      "id": 9
+    },
+    {
+      "name": "خراسان جنوبي",
+      "id": 10
+    },
+    {
+      "name": "خراسان رضوي",
+      "id": 11
+    },
+    {
+      "name": "خراسان شمالي",
+      "id": 12
+    },
+    {
+      "name": "خوزستان",
+      "id": 13
+    },
+    {
+      "name": "زنجان",
+      "id": 14
+    },
+    {
+      "name": "سمنان",
+      "id": 15
+    },
+    {
+      "name": "سيستان و بلوچستان",
+      "id": 16
+    },
+    {
+      "name": "فارس",
+      "id": 17
+    },
+    {
+      "name": "قزوين",
+      "id": 18
+    },
+    {
+      "name": "قم",
+      "id": 19
+    },
+    {
+      "name": "كردستان",
+      "id": 20
+    },
+    {
+      "name": "كرمان",
+      "id": 21
+    },
+    {
+      "name": "كرمانشاه",
+      "id": 22
+    },
+    {
+      "name": "كهگيلويه و بويراحمد",
+      "id": 23
+    },
+    {
+      "name": "گلستان",
+      "id": 24
+    },
+    {
+      "name": "گيلان",
+      "id": 25
+    },
+    {
+      "name": "لرستان",
+      "id": 26
+    },
+    {
+      "name": "مازندران",
+      "id": 27
+    },
+    {
+      "name": "مركزي",
+      "id": 28
+    },
+    {
+      "name": "هرمزگان",
+      "id": 29
+    },
+    {
+      "name": "همدان",
+      "id": 30
+    },
+    {
+      "name": "يزد",
+      "id": 31
+    }
+]
 
+const address = ref({
+  "cityId": 0,
+  "firstName": "",
+  "lastName": "",
+  "phone": "",
+  "mobile": "",
+  "addressValue": "",
+  "latLong": "",
+  "postalCode": "",
+  "nationalCode": ""
+})
+
+onMounted(async()=>{
+    await addressStore.getAddress()  
+})
+
+
+const addAddress = ()=>{
+    showModal.value = false;
+
+
+}
 </script>
 
 <style lang="scss">
