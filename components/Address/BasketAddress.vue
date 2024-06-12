@@ -4,11 +4,17 @@
     <strong class="flex  w-full bg-yellow-300 p-2">مشخصات گیرنده
 
 
-      <button @click="showModal = true" class="text-sm text-orange-800 ms-auto">آدرس دیگر</button>
+      <button @click="showModal = true" class="text-sm
+       bg-white flex border rounded p-1 items-center
+        text-yellow-700 ms-auto">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m16.862 4.487l1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8l.8-2.685a4.5 4.5 0 0 1 1.13-1.897zm0 0L19.5 7.125"/></svg>
+       تغیر آدرس</button>
 
     </strong>
 
-    <div v-if="cartStore?.cart?.data?.addressId" class="current-address flex flex-wrap p-1">
+    <div v-if="cartStore?.cart?.data?.addressId" 
+    class="current-address flex flex-wrap p-1 ">
 
       <p class="w-full text-sm p-1 lg:w-1/2">نام: <b>{{currentAddress?.firstName}}</b></p>
       <p class="w-full text-sm p-1 lg:w-1/2">نام خانوادگی: <b>{{currentAddress?.lastName}}</b></p>
@@ -2691,6 +2697,7 @@ const getCurrentAddress = ()=>{
   }else{
     if(addressStore.addressData?.list?.length > 0){
       setBasketAddress(addressStore.addressData?.list[0].id)
+      currentAddress.value = addressStore.addressData?.list[0]
     }
   }
 }

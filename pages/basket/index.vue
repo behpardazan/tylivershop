@@ -67,9 +67,14 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" style="width: 23px;height: 26px;"><path fill="none" stroke="#888888" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 1 1-7.5 0a3.75 3.75 0 0 1 7.5 0M4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632" style="stroke: black;"></path></svg> 
                     ادامه
                 </NuxtLink>
-                <button v-else class="bg-yellow-500 hover:bg-yellow-600 mt-auto p-1 rounded w-full flex items-center justify-center">ادامه
+                <NuxtLink to="/basket/invoice" v-else 
+                class="bg-yellow-500 hover:bg-yellow-600
+                mt-auto p-1 rounded w-full flex items-center 
+                justify-center">
+                
+                ادامه
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 20 20"><path fill="currentColor" fill-rule="evenodd" d="M15 10a.75.75 0 0 1-.75.75H7.612l2.158 1.96a.75.75 0 1 1-1.04 1.08l-3.5-3.25a.75.75 0 0 1 0-1.08l3.5-3.25a.75.75 0 1 1 1.04 1.08L7.612 9.25h6.638A.75.75 0 0 1 15 10" clip-rule="evenodd"/></svg>
-                </button>
+                </NuxtLink>
 
                 </div>
                 <img class="w-full h-auto rounded mt-2" src="/img/gif.gif" alt="">

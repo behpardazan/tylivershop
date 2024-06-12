@@ -17,7 +17,7 @@ export const useMerchant = defineStore("merchantStore", {
                     method: "GET",
                 });
                 console.log(req);
-                this.addressData = req;
+                this.merchantData = req;
 
             } catch (error) {
                 console.log("ERROR fromcontact store:" + error);

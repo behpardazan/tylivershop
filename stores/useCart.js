@@ -46,6 +46,7 @@ export const useCart = defineStore('cartStore', {
             cart: null,
             cartCount: 0,
             productIdCount:[],
+            deliveryMethod:null
             //if get "code: 1" in result you most login
         }
     },
@@ -72,6 +73,8 @@ export const useCart = defineStore('cartStore', {
                             
                         });
 
+                        // this.getDelivery()
+
                 }
             } catch (error) {
                 // console.log(error);
@@ -88,19 +91,7 @@ export const useCart = defineStore('cartStore', {
                     // console.log(response); 
                     if (response.isSuccess) {
                         return response
-                        console.log("successfully called");
-                        this.cart = response;
-                       
-
-
-                        response?.data?.cartItems.forEach(element => {
-                            this.productIdCount.push({"id":element?.id,"productId":element?.productId,"count": element?.count})
-                            
-                        });
-
-                        // console.log(this.productIdCount);
-
-                        // this.cartCount = response.data.itemCount
+                      
 
                     }
                     // console.log("================= add products cart response ========");
@@ -108,7 +99,35 @@ export const useCart = defineStore('cartStore', {
                 } catch (error) {
                     // console.log(error);
                 }
-        } 
+        },
+        async getDelivery (){
+            try {
+                const response = await $fetch("/api/cart/cart", {
+                    method: "POST",
+                    body: {
+                        "cartUpdateType": this.cartStatus.getDelivery.id,
+                    },
+                });
+                // console.log("---- cart --------");
+                // console.log(response); 
+                if (response.isSuccess) {
+                    console.log("successfully called");
+                    this.deliveryMethod = response;
+                    this.getCart({
+                        cartUpdateType:this.cartStatus.setDelivery.id,
+                        deliveryId:response?.data[0]?.id
+                    })
+                    return response
+                   
+
+
+                }
+                // console.log("================= add products cart response ========");
+                // console.log(response);
+            } catch (error) {
+              
+            }
+        }
 
 
     },
