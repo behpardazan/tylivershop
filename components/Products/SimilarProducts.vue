@@ -51,7 +51,7 @@
       >
         <swiper-slide
           v-for="item in data?.list"
-          class="text-center max-w-[250px] min-w-[250px] text-xs hover:bg-gray-100 p-1 py-2 rounded rounded-lg"
+          class="text-center   text-xs hover:bg-gray-100 p-1 py-2 rounded rounded-lg"
         >
           <!-- {{ item }} -->
 
@@ -96,3 +96,10 @@ onMounted(async () => {
 //   return groupedLists;
 // };
 </script>
+<style scoped>
+@media (max-width: 600px) {
+}
+.swiper {
+  padding-left: 80px;
+}
+</style>

@@ -66,6 +66,7 @@
 
 *{
     font-family: YekanBakh;
+	scroll-behavior: smooth;
 }
 
 body > div#__nuxt{

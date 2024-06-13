@@ -13,7 +13,7 @@
       :class="{ 'border-b': (index + 1) % 3 != 0 }"
     >
        <UBadge 
-            class="absolute left-0 bottom-3" 
+            class="absolute left-0 top-0" 
             color="blue" variant="solid">{{index+1}}</UBadge>
       <strong>
         <!-- {{ data.id }} -->

@@ -1,5 +1,5 @@
 <template>
-  <header class="shadow min-h-10 sticky top-0 z-10 bg-white">
+  <header id="header" class="shadow min-h-10 sticky top-0 z-10 bg-white">
     <HeaderAds />
     <div
       v-if="isOpenDesktop == true"
@@ -249,7 +249,7 @@
         </nuxt-link>
         <nuxt-link
           class="px-1 lg:hidden flex flex-col items-center lg:border-s border-dotted border-gray-400 lg:ps-4 lg:ms-4"
-          to="#"
+          to="/basket"
         >
           <svg
             width="30"

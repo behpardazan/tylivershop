@@ -100,3 +100,4 @@ const splitData = (myList, chunkSize) => {
   padding-left: 80px;
 }
 </style>
+ 

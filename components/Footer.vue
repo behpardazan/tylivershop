@@ -2,6 +2,10 @@
   <footer
     class="bg-yellow-500 min-h-[200px] mt-auto w-full py-3 pb-[82px] lg:pb-0 relative"
   >
+
+  <button class="bg-black absolute right-5 top-[-47px] z-10 rounded-t-full py-2" @click="scrollTop"> 
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M8 14a.75.75 0 0 0 .75-.75V4.56l1.22 1.22a.75.75 0 1 0 1.06-1.06l-2.5-2.5a.75.75 0 0 0-1.06 0l-2.5 2.5a.75.75 0 0 0 1.06 1.06l1.22-1.22v8.69c0 .414.336.75.75.75" clip-rule="evenodd" style="fill: #fff;"></path></svg>
+    </button>
     <div class="container p-1 lg:flex lg:pb-4">
       <div>
         <div class="about text-sm text-justify p-1">
@@ -104,11 +108,11 @@
 
 <script setup>
   const detailStore = useDetails();
-  
-  onMounted(async()=>{
+  const scrollTop = ()=> {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
 
-    
-  })
 </script>
 
 <style lang="scss" scoped></style>

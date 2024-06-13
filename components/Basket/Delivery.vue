@@ -1,7 +1,7 @@
 <template>
-    <div class="shiping-box">
-                    <strong>نحوه ارسال</strong>
-                    <ul class="border p-1 rounded bg-gray-100 mt-1 min-h-[150px]">
+    <div class="shiping-box border rounded bg-gray-100 mt-2">
+                    <strong class="bg-gray-200 flex p-2">نحوه ارسال</strong>
+                    <ul class=" p-1  mt-1 min-h-[150px]">
                         <li v-for="item in  cartStore?.deliveryMethod?.data">
                             <label class="flex items-center " for="">
                                 <input type="checkBox" name="" id="">
