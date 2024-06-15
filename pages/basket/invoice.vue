@@ -22,7 +22,7 @@
                         هزینه ارسال
                    </div>
                     <div class="w-1/2 lg:w-3/6 text-center border   p-1">
-                    {{ cartStore?.cart?.data?.deliveryPrice.toLocaleString() }}</div>
+                    {{ cartStore?.cart?.data?.deliveryPrice?.toLocaleString() }}</div>
                     
                 </div>
                 <div class="delivery flex w-full ">
@@ -59,7 +59,7 @@
             </div>
             </div>
             <div class="factor border border-gray-300 overflow-hidden  mt-2 rounded">
-                <div class="factor-header flex w-full bg-black text-white">
+                <div class="hidden factor-header lg:flex w-full bg-black text-white">
                     <div class="lg:w-1/12 text-center   p-1">ردیف</div>
                     <div class="lg:w-5/12 text-center   p-1">شرح</div>
                     <div class="lg:w-1/6 text-center   p-1">فی</div>
@@ -68,14 +68,30 @@
                 </div>
                 <div class="factor-body">
                     <div v-for="(item,index) in cartStore?.cart?.data?.cartItems"
-                     class="flex w-full">
+                     class="flex w-full flex-wrap mt-2 lg:mt-0">
 
                         <!-- {{ item }} -->
-                    <div class="lg:w-1/12 text-center border border-gray-300 bg-gray-00 p-1">{{index+1}}</div>
-                    <div class="lg:w-5/12 text-center border border-gray-300  p-1">{{ item?.product?.name }}</div>
-                    <div class="lg:w-1/6 text-center border  border-gray-300  p-1">{{ item?.basePrice?.toLocaleString() }}</div>
-                    <div class="lg:w-1/6 text-center border  border-gray-300  p-1">{{ item?.count }}</div>
-                    <div class="lg:w-1/6 text-center border  border-gray-300  p-1">{{ item?.product?.price.toLocaleString() }}</div>
+                    <div class="w-1/6 lg:w-1/12 text-center lg:border border-gray-300 bg-gray-00 p-1">
+                        
+                        {{index+1}}
+                        <span class="lg:hidden">-</span>
+                    </div>
+                    <div class="w-5/6 lg:w-5/12 text-start lg:text-center lg:border border-gray-300  p-1">
+                        
+                        {{ item?.product?.name }}</div>
+                    <div class="w-1/2 lg:w-1/6 text-center lg:border  border-gray-300  p-1">
+                        <span class="lg:hidden">قیمت:</span>
+
+                        
+                        {{ item?.basePrice?.toLocaleString() }}</div>
+                    <div class="w-1/2 lg:w-1/6 text-center lg:border  border-gray-300  p-1">
+                        <span class="lg:hidden">تعداد:</span>
+                        
+                        {{ item?.count }}</div>
+                    <div class="w-full bg-yellow-200 lg:w-1/6 text-center lg:border  border-gray-300  p-1">
+                        <span class="lg:hidden">جمع:</span>
+                        
+                        {{ item?.product?.price.toLocaleString() }}</div>
                 </div>
                 </div>
                 

@@ -61,8 +61,16 @@ export const useCart = defineStore('cartStore', {
                 });
                
                 if (response.isSuccess) {
+                    console.log("response?.data?.paymentUrl");
+                    console.log(response?.data?.paymentUrl);
+
                     // console.log("successfully added");
-                    this.cart = response;
+                    if(response?.data?.paymentUrl){
+                        
+                        navigateTo(response?.data?.paymentUrl)
+                        console.log(response?.data?.paymentUrl);
+                    }else{
+                        this.cart = response;
 
                     this.cartCount = response.data.itemCount;
                        
@@ -72,6 +80,10 @@ export const useCart = defineStore('cartStore', {
                             this.productIdCount.push({"id":element?.id,"productId":element?.productId,"count": element?.count})
                             
                         });
+                    }
+                    
+
+                    
 
                         // this.getDelivery()
 

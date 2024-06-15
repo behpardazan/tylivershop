@@ -346,7 +346,7 @@
         <HeaderMegaMenuMobile />
         <!-- <Placeholder class="h-full" /> -->
       </UCard>
-    </USlideover>
+    </USlideover> 
 
     
   </header>
@@ -423,7 +423,9 @@ onMounted(async () => {
 
   
 });
-
+watch(route, value => {
+    isOpen.value = false
+  }, {deep: true, immediate: true})
 //*** اگر بخوام با هاور دیتاهارو بگیرم*** */
 // @mouseover="getIems()"
 // const getIems = async () =>{

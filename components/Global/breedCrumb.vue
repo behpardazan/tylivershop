@@ -1,5 +1,5 @@
 <template>
-  <div class="breedcrumb bg-gray-100 p-2bg-white">
+  <div class="breedcrumb bg-gray-100 p-2bg-white dark:text-black">
     <div class="container">
       <ol
         class="flex items-center"
