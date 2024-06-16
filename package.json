@@ -21,6 +21,8 @@
         "@nuxt/ui": "npm:@nuxt/ui-edge@latest",
         "@pinia/nuxt": "^0.5.1",
         "jalali-moment": "^3.3.11",
+        "leaflet": "^1.9.4",
+        "mapbox-gl": "^3.4.0",
         "medium-zoom": "^1.1.0",
         "nuxt-leaflet": "^0.0.27",
         "nuxt-swiper": "^1.2.2",

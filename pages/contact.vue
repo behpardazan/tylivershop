@@ -187,6 +187,7 @@
         </div>
       </div>
     </div>
+    <GlobalMap />
   </section>
 </template>
 
