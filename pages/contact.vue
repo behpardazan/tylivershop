@@ -13,7 +13,7 @@
         رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل
         دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
       </p>
-      <div class="flex flex-wrap">
+      <div class="flex flex-wrap dark:text-black">
         <div class="w-full lg:w-1/3">
           <div class="contactBox flex rounded bg-gray-100 mt-2 items-center border p-2">
             <div class="icon border-l border-l-2 border-l-red-500 p-3">
@@ -183,11 +183,14 @@
           </div>
         </div>
         <div class="w-full lg:w-1/3 p-2">
-          <img class="w-full h-auto" src="/img/map.jpg" alt="" />
+          
+
+          <GlobalMap />
+
+
         </div>
       </div>
     </div>
-    <GlobalMap />
   </section>
 </template>
 
