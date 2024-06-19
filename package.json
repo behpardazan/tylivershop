@@ -26,6 +26,7 @@
         "medium-zoom": "^1.1.0",
         "nuxt-leaflet": "^0.0.27",
         "nuxt-swiper": "^1.2.2",
+        "nuxt3-leaflet": "^1.0.13",
         "pinia": "^2.1.7",
         "swiper": "^11.0.7",
         "tailwind-scrollbar-hide": "^1.1.7",

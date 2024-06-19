@@ -182,9 +182,8 @@
             </div>
           </div>
         </div>
-        <div class="w-full lg:w-1/3 p-2">
-          
-
+        <div class="w-full lg:w-1/3 p-2 bg-gray-200">
+         
           <GlobalMap />
 
 

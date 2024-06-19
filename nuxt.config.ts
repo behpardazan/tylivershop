@@ -27,6 +27,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     'nuxt-swiper',
     '@pinia/nuxt',
+    'nuxt3-leaflet' 
   ],
   i18n: {
     detectBrowserLanguage: {
