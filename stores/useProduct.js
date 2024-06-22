@@ -152,7 +152,36 @@ export const useProducts = defineStore("productsStore", {
                 console.log(error);
             }
         },
+        async save(id) {
+            // console.log(id);
+            try {
+                const list = []
+                const req = await $fetch("/api/products/like", {
+                    method: "Post",
+                    body: {
+                        ProductId: id
+                    }
+                });
+                // console.log(req);
+                // this.data = req;
+                let i = 1;
+                req.list.forEach(element => {
+                    console.log(element);
+                    list.push({
+                        'ردیف': i,
+                        'عنوان': element.name,
+                        'مقدار': element.productFeatureValues[0].name
+                    })
+                    i++;
+                });
 
+                return list
+
+            } catch (error) {
+                console.log("ERROR fromcontact store:" + error);
+                console.log(error);
+            }
+        },
 
 
 

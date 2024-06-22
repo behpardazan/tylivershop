@@ -79,7 +79,7 @@
           </svg>
           {{ $t("comments") }}
         </nuxt-link>
-        <nuxt-link class="flex items-center p-1 hover:bg-green-200 px-2 border-gray-100 border rounded hover:border hover:border-green-300" to="">
+        <nuxt-link :to="`/compare?productId=${data?.data?.id}`" class="flex items-center p-1 hover:bg-green-200 px-2 border-gray-100 border rounded hover:border hover:border-green-300" to="">
           <svg class="me-1"  width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M15 22H9C6.5 22 5 20.2 5 18V6C5 3.8 6.5 2 9 2H15C17.5 2 19 3.8 19 6V18C19 20.2 17.5 22 15 22Z"
               stroke="#0F0F0F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -90,7 +90,7 @@
 
           {{ $t("compare") }}
         </nuxt-link>
-        <nuxt-link class="flex items-center p-1 hover:bg-green-200 px-2 border-gray-100 border rounded hover:border hover:border-green-300" to="">
+        <button @click="productsStore.save(data?.data?.id)" class="flex items-center p-1 hover:bg-green-200 px-2 border-gray-100 border rounded hover:border hover:border-green-300" to="">
           <svg class="me-1"  width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
@@ -101,8 +101,8 @@
           </svg>
 
           {{ $t("like") }}
-        </nuxt-link>
-        <nuxt-link class="flex items-center p-1 hover:bg-green-200 px-2 border-gray-100 border rounded hover:border hover:border-green-300" to="">
+        </button>
+        <button @click="isOpen=true" class="flex items-center p-1 hover:bg-green-200 px-2 border-gray-100 border rounded hover:border hover:border-green-300" to="">
           <svg class="me-1"  width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M2 9V6.5C2 4.01 4.01 2 6.5 2H9" stroke="#0F0F0F" stroke-width="1.5" stroke-linecap="round"
               stroke-linejoin="round" />
@@ -126,7 +126,7 @@
           </svg>
 
           {{ $t("QR") }}
-        </nuxt-link>
+        </button>
       </div>
         <p v-if="data?.data?.quantity">
           <strong>{{ $t("price") }}:</strong>{{ data?.data?.price?.toLocaleString() }}
@@ -146,18 +146,18 @@
       </div>
       <div class="info-box"></div>
     </div>
-  </section>
+  
   <ProductsRelatedProducts 
   :similarData="{ id:  data?.data?.id }" />
 
-  <div class="container">
+  <div class="container" v-if="data?.data?.description">
     <div class="details p-2 text-justify">
       <strong class="bg-black text-white lg:text-black lg:bg-white lg:text-start block rounded  text-center p-2 my-2">{{
         $t('introductionOfProduct') }}</strong>
       <p v-html="data?.data?.description"></p>
     </div>
   
-  <div class="details p-2 text-justify">
+  <div class="details p-2 text-justify" v-if="productFeature?.length>0">
     <strong class="bg-black text-white lg:text-black lg:bg-white lg:text-start block rounded  text-center p-2 my-2">
 {{ $t('technicalDescription') }}</strong>
     <UTable :rows="productFeature" />
@@ -233,10 +233,19 @@
           </div>
         </div>
         <div
-          class="sendComment p-3 bg-[#ebeaea] mt-4 rounded-[5px] border-[#d8d8d8] border w-full lg:w-1/2"
+          class="sendComment p-3 bg-[#ebeaea] mt-4 rounded-[5px] border-[#d8d8d8] border w-full lg:w-1/2 flex flex-col"
         >
         
-          <div
+          
+          <label for="">ثبت نظر: </label>
+          <textarea
+            class="min-h-[100px] w-full p-1"
+            v-model="commentText"
+          ></textarea>
+
+          <div class="flex">
+
+            <div
             class="rateBox1 flex flex-row-reverse justify-end "
           >
             <input
@@ -339,15 +348,12 @@
                   d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
                 /></svg
             ></label>
-          </div>
-          <textarea
-            class="min-h-[100px] w-full p-1"
-            v-model="commentText"
-          ></textarea>
-          <button class="py-2 px-3 text-[18px] bg-green-600 text-white p-2 w-[300px] rounded mt-3" @click="sendComment">
-            {{ $t('add') }}
+          </div><button class="py-2 px-3 text-[18px] bg-green-600 text-white p-2 w-[300px] rounded mt-3 ms-auto" @click="sendComment">
+            {{ $t('submite') }}
             
           </button>
+          </div>
+          
         </div>
         </div>
 </div>
@@ -355,6 +361,13 @@
 
   <ProductsSimilarProducts :similarData="{ categoryId: data?.data?.category?.id, productId: data?.data?.id }" />
 
+  
+  <UModal v-model="isOpen">
+      <div class="p-4">
+        <img data-v-7eb3bd74="" class="w-full h-[200px] object-contain" :src="`https://api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=https://bhpsolution.com/${route.fullPath}`" alt="qr">
+      </div>
+    </UModal>
+</section>
 </template>
 
 <script setup>
@@ -363,12 +376,12 @@ const {
 } = useRuntimeConfig();
 const productsStore = useProducts();
 const authStor = useAuth();
-const productFeature = ref();
+const productFeature = ref(null);
 const pictureList=ref();
 const route = useRoute();
 const count = ref(1);
 const commentText = ref("");
-
+const isOpen = ref(false)
 const { data, pending, error, refresh } = await useFetch("/api/products/productItem", {
   query: { id: route.params.id.split("-")[0] },
 });

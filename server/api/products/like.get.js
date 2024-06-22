@@ -1,16 +1,17 @@
-export default defineEventHandler(async(event) => {
-    const { public: { baseUrl } } = useRuntimeConfig()
+export default defineEventHandler(async(event)=>{
+    const {public:{baseUrl}} = useRuntimeConfig()
 
- 
+        const token = getCookie(event,'token');
     try {
-        const data = await $fetch(`${baseUrl}/api/Category`, {
+        const data = await $fetch(`${baseUrl}/api/EndUser/ProductLike` , {
             method: 'GET',
             headers: {
-                'Accept': 'application/json'
+                'Accept': 'text/plain',
+                'Authorization': `Bearer ${token}`
             },
-            query: getQuery(event)
+           
         })
-
+        
         return data;
     } catch (error) {
         // if(error.statusCode == 401){
@@ -21,11 +22,9 @@ export default defineEventHandler(async(event) => {
         //         path: '/'
         //     })
         // }
-        console.log("ERROR from nuxt api:" + error);
-
+        console.log("ERROR from nuxt api:"+error);
+        
         return error
     }
 
-
-    return 'body'
 })

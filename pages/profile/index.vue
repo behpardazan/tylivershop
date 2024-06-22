@@ -249,8 +249,8 @@ onMounted(() => {
   // getCurrentUser();
   // console.log("==========================profile================");
   // console.log(authStore);
-  // getLike();
-  // getOrder();
+  getLike();
+  getOrder();
 });
 
 const getCurrentUser = async () => {
@@ -269,7 +269,7 @@ const getCurrentUser = async () => {
 
 const getLike = async () => {
   try {
-    const response = await $fetch("/api/product/like", {
+    const response = await $fetch("/api/products/like", {
       method: "GET",
     });
     console.log("like");
@@ -285,6 +285,9 @@ const getOrder = async () => {
   try {
     const response = await $fetch("/api/productOrder/productOrder", {
       method: "GET",
+      query:{
+        pageSize:5
+      }
     });
     // console.log("like");
     // console.log(user.value);

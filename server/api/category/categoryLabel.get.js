@@ -1,14 +1,15 @@
 export default defineEventHandler(async(event) => {
     const { public: { baseUrl } } = useRuntimeConfig()
 
- 
+    console.log("eventaaaaaaaaaaaaaaaaaaaaaaaaa");
+    console.log(getQuery(event))
+
     try {
-        const data = await $fetch(`${baseUrl}/api/Category`, {
+        const data = await $fetch(`${baseUrl}/api/Category/label/${getQuery(event).catLabel}`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json'
             },
-            query: getQuery(event)
         })
 
         return data;

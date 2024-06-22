@@ -22,7 +22,8 @@
               "
             />
             <p class="mt-2">{{ $t("name") }}:{{ item?.name }}</p>
-            <p class="text-sm text-justify">{{ $t("summary") }}:{{ item?.summary }}</p>
+            <p v-if="item?.summary?.length>100" class="text-sm text-justify">{{ $t("summary") }}:{{ item?.summary.substr(0,100) }}...</p>
+            <p v-else class="text-sm text-justify">{{ $t("summary") }}:{{ item?.summary }}</p>
           </NuxtLink>
         </div>
       </div>

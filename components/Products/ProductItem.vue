@@ -1,6 +1,6 @@
 <template>
   <nuxt-link
-    :to="'/pr/' + data?.id + '-' + data?.name?.replaceAll(' ', '-')"
+    :to="'/pr/' + data?.id + '-' + data?.name?.replaceAll(' ', '-')?.replaceAll('/', '-')"
     class="block border p-1 dark:text-black text-sm bg-white rounded-lg flex flex-col min-h-[290px]"
   >
     <img
@@ -30,7 +30,7 @@
           -
         </button>
       </div>
-      <button v-else class="bg-yellow-500 hover:bg-green-500 text-yellow-950 p-2 w-full rounded flex items-center 
+      <button @click="add2Basket(data?.id)" v-else class="bg-yellow-500 hover:bg-green-500 text-yellow-950 p-2 w-full rounded flex items-center 
       justify-center">
       <svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.137a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0m12.75 0a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0"/></svg>
       افزودن به سبد خرید</button>
@@ -92,9 +92,13 @@
 const {
   public: { showImageBaseUrl },
 } = useRuntimeConfig();
+const toast = useToast()
+
 const cartStore = useCart();
 const props=defineProps(["data", "index"]);
 const basketCount = ref(0)
+const baskeId = useCookie('baskeId')
+
 
 onMounted(() => {
   // console.log(cartStore?.productIdCount);
@@ -114,6 +118,61 @@ onMounted(() => {
   }, 1000);
 })
 
+const cart=ref()
+const add2Basket = async (id) => {
+
+
+
+
+if (!baskeId.value) {
+  baskeId.value=""
+  cart.value = await cartStore.getCart({
+    "cartUpdateType": cartStore.cartStatus.add.id,
+    "productId": id,
+  })
+
+  console.log(cart.value);
+
+  if (cart.value?.isSuccess) {
+    toast.add({ title: 'با موفقیت به سبد اضافه شد' })
+    baskeId.value = cart?.value?.data;
+    setTimeout(() => {
+      cartStore.getCartCount({
+        "cartUpdateType": cartStore.cartStatus.getCart.id,
+        "uniqueId": baskeId.value,
+      })
+    }, 5000);
+  }
+} else {
+  cart.value = await cartStore.getCart({
+    "cartUpdateType": cartStore.cartStatus.add.id,
+    "productId": props.productId,
+    "uniqueId": baskeId.value
+  })
+  if (cart.value?.isSuccess) {
+    toast.add({ title: 'با موفقیت به سبد اضافه شد' })
+    setTimeout(() => {
+      cartStore.getCartCount({
+        "cartUpdateType": cartStore.cartStatus.getCart.id,
+        "uniqueId": baskeId.value,
+      })
+    }, 5000);
+
+  }
+}
+
+
+// **** sample code for check if login add to basket ****
+// if (authStor?.userData) {
+//   cartStore.add2Basket({
+//     "cartUpdateType": cartStore.cartStatus.add.id,
+//     "productId": props.productId,
+//   })
+// } else {
+//   // alert("no");
+//   isOpen.value = true;
+// }
+};
 
 
 

@@ -284,6 +284,12 @@
         </nuxt-link>
         <nuxt-link
           class="px-1 hidden lg:flex flex-col items-center lg:border-s border-dotted border-gray-400 lg:ps-4 lg:ms-4"
+          to="/map"
+        >
+          <span>تعمیرکاران</span>
+        </nuxt-link>
+        <nuxt-link
+          class="px-1 hidden lg:flex flex-col items-center lg:border-s border-dotted border-gray-400 lg:ps-4 lg:ms-4"
           to="/blog"
         >
           <span>{{ $t("blogs") }}</span>

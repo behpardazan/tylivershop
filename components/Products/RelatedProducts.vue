@@ -1,5 +1,5 @@
 <template>
-  <section class="p-2 overflow-hidden">
+  <section class="p-2 overflow-hidden" v-if="data?.data?.relatedProductList.length >0">
     <div class="container">
       <strong class="flex items-center justify-start">
         <svg

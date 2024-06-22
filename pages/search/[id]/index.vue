@@ -5,15 +5,18 @@
         {
           name: $t('products'),
           url: `/search`,
+        },{
+          name: data?.data?.name,
+          url: `/`,
         },
       ]"
     />
     <div class="container p-2">
-      <h1>{{ $t("products") }}</h1>
-      {{ data?.name }}
+      <h1>{{ data?.data?.name }}</h1>
+      
       <div class="flex">
         <div class="lg:w-1/4 hidden lg:block p-2 dark:text-black">
-          <div class="bg-white p-2 border">
+          <div class="bg-white p-2 border lg:sticky lg:top-[150px]">
             <ProductsCategory />
             <!-- <div class="stock-box">
               <strong>برند ها</strong>
@@ -128,7 +131,7 @@
             </button>
           </div>
           <div class="product-wrapper flex flex-wrap w-full">
-            <div v-for="item in data?.list" class="w-1/2 lg:w-1/4 p-1">
+            <div v-for="item in products?.list" class="w-1/2 lg:w-1/4 p-1">
               <ProductsProductItem :data="item" />
             </div>
           </div>
@@ -144,6 +147,11 @@
           ></GlobalPaging>
         </div>
       </div>
+    
+
+    </div>
+    <div class="bg-gray-200 py-3">
+      <div class="p-2 container p-1" v-html="data?.data?.description"></div>
     </div>
     <USlideover v-model="isOpen" prevent-close>
       <UCard
@@ -167,6 +175,7 @@
               @click="isOpen = false"
             />
           </div>
+          
         </template>
         <ProductsCategory />
       </UCard>
@@ -177,7 +186,7 @@
 <script setup>
 const productsStore = useProducts();
 const isOpen = ref(false);
-const data = ref();
+const products = ref();
 const range1 = ref(100);
 const range2 = ref(3000000);
 const route = useRoute();
@@ -194,9 +203,15 @@ const customeConfig = ref({
   categoryLabels: [route.params.id],
 });
 
+const { data, pending, error, refresh } = await useFetch("/api/category/categoryLabel", {
+  query:{
+    catLabel:route.params.id
+  }
+});
 onMounted(async () => {
+  
   // data.value = await productsStore.getProducts(productsStore.lates);
-  data.value = await productsStore.getProducts(customeConfig?.value);
+  products.value = await productsStore.getProducts(customeConfig?.value);
   // console.log(await productsStore.getProducts(productsStore.popular));
 });
 

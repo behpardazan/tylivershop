@@ -72,7 +72,7 @@ const likedProductList= ref()
 
         const getLike = async ()=>{
             try {
-                const response = await $fetch('/api/product/like', {
+                const response = await $fetch('/api/products/like', {
                     method: 'GET',
                     
                 })
@@ -85,7 +85,7 @@ const likedProductList= ref()
 
 const deleteLike = async (id)=>{
             try {
-                const response = await $fetch('/api/product/like', {
+                const response = await $fetch('/api/products/like', {
                     method: 'DELETE',
                     body:{
                         "productId": id,
