@@ -5,13 +5,22 @@ export const useDetails = defineStore("detailsStore", {
     state: () => {
         return {
             data: null,
+            branchData: null,
             mobile:null,
             address:null,
+            baseDetail:null,
             conection: {
                 CategoryLabel: 'conection',
                 "sortBy": 1,
                 "available": true
             },
+            branches: {
+                CategoryLabel: 'branches',
+                "sortBy": 1,
+                "available": true
+            },
+
+
 
             // popular: {
             //     "active": true,
@@ -47,7 +56,32 @@ export const useDetails = defineStore("detailsStore", {
                     query: state,
                 });
                 // console.log(req);
-                this.data = req;
+
+                if(state?.CategoryLabel=='branches'){
+this.branchData=req;
+                }else{
+                    this.data = req;
+
+                }
+                return req
+
+            } catch (error) {
+                console.log("ERROR fromcontact store:" + error);
+                console.log(error);
+            }
+        },
+        async getBaseDetails() {
+            // console.log(id);
+            try {
+
+                const req = await $fetch("/api/detail/baseDetail", {
+                    method: "GET",
+                });
+                // console.log(req);
+
+                    this.baseDetail = req;
+
+                
                 return req
 
             } catch (error) {

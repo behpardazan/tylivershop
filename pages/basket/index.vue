@@ -16,11 +16,13 @@
                 </svg> {{ $t('basket') }}
             </h1>
             <div class="cartItems p-1 border lg:w-3/4 bg-white mt-1 bg-[#ecf0e8]">
-                <div class="flex flex-col items-center justify-center" v-if="cartStore?.cart?.data?.cartItems.length==0 || cartStore?.cart == null">
+                <div class="flex flex-col items-center justify-center"
+                 v-if="cartStore?.cart?.data?.cartItems.length==0 ||
+                  cartStore?.cart == null">
                     <img class="max-w-[50%] h-auto m-auto w-full" src="/img/empty.webp" />
                     <span>سبد خرید شما خالی میباشد</span>
                 </div>
-                <ProductsBasketProductItem v-esle />
+                <ProductsBasketProductItem v-if="cartStore?.cart?.data?.cartItems.length>0" />
             </div>
             <div class="w-full lg:w-1/4 p-1">
                 <div class="border bg-white  flex items-start flex-col

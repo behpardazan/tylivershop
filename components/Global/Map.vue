@@ -1,10 +1,10 @@
 <template>
   <div>
-
     <LMap
       style="height: 350px; width: 100%;"
       :zoom="9"
-      :center="[lat, lng]"
+      :center="[parseFloat(location?.x), parseFloat(location?.y)]"
+           :use-global-leaflet="false"
     >
       <LTileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -13,7 +13,7 @@
 
       <!-- نشانگر قابل جابجایی -->
       <LMarker
-        :lat-lng="[lat, lng]"
+        :lat-lng="[location?.x, location?.y]"
         
       >
       </LMarker>
@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-
+const props = defineProps(['location'])
 
 // تعریف مختصات اولیه
 const lat = ref(41.8329) // عرض جغرافیایی اولیه

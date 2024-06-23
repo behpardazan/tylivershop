@@ -429,17 +429,15 @@ onMounted(async () => {
 
   
 });
-watch(route, value => {
-    isOpen.value = false
-  }, {deep: true, immediate: true})
-//*** اگر بخوام با هاور دیتاهارو بگیرم*** */
-// @mouseover="getIems()"
-// const getIems = async () =>{
-//   await cartStore.getCart({
-//       "cartUpdateType": cartStore.cartStatus.getCart.id,
-//       "uniqueId": baskeId.value,
-//   })
-// }
+const router = useRouter()
+const currentRoute = ref(' ')
+watch(() => router.currentRoute.value, (to, from) => {
+  console.log('Route changed:', to, from)
+  // Perform any operation you want here
+  isOpen.value=false
+  currentRoute.value = to.path
+})
+
 </script>
 
 <style>

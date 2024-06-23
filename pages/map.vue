@@ -1,7 +1,14 @@
 <template>
   <section>
+    <GlobalBreedCrumb
+      :data="[
+        {
+          name:' تعمیرکاران',
+          url: ``,
+        },
+      ]"
+    />
     <div class="container">
-      sina
       <GlobalMapMulti />
     </div>
   </section>

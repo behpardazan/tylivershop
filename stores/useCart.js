@@ -46,7 +46,8 @@ export const useCart = defineStore('cartStore', {
             cart: null,
             cartCount: 0,
             productIdCount:[],
-            deliveryMethod:null
+            deliveryMethod:null,
+            paymentUrl:null
             //if get "code: 1" in result you most login
         }
     },
@@ -61,14 +62,13 @@ export const useCart = defineStore('cartStore', {
                 });
                
                 if (response.isSuccess) {
-                    console.log("response?.data?.paymentUrl");
-                    console.log(response?.data?.paymentUrl);
-
+                    
                     // console.log("successfully added");
                     if(response?.data?.paymentUrl){
-                        
-                        navigateTo(response?.data?.paymentUrl)
+                        console.log("response?.data?.paymentUrl");
                         console.log(response?.data?.paymentUrl);
+                        this.paymentUrl=response?.data?.paymentUrl;
+                        navigateTo('/')
                     }else{
                         this.cart = response;
 
@@ -80,6 +80,10 @@ export const useCart = defineStore('cartStore', {
                             this.productIdCount.push({"id":element?.id,"productId":element?.productId,"count": element?.count})
                             
                         });
+
+
+
+                        return response
                     }
                     
 
@@ -139,7 +143,28 @@ export const useCart = defineStore('cartStore', {
             } catch (error) {
               
             }
-        }
+        },
+        async cartFunction (status) {
+
+            try {
+                const response = await $fetch("/api/cart/cart", {
+                    method: "POST",
+                    body: status,
+                });
+                // console.log("---- cart --------");
+                // console.log(response); 
+                if (response.isSuccess) {
+                    return response
+                  
+
+                }
+                // console.log("================= add products cart response ========");
+                // console.log(response);
+            } catch (error) {
+                // console.log(error);
+            }
+    },
+    
 
 
     },

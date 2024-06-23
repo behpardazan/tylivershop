@@ -1,5 +1,4 @@
 <template>
-     <div>
         <div  v-for="item in cartStore?.cart?.data?.cartItems"
                     class=" bg-white cart-item mb-1 border-b flex items-center rounded">
                     <img class="border p-2 w-[150px] h-[150px]  object-contain me-1"
@@ -20,12 +19,12 @@
                                 <div class="count flex items-center">
                                 <button class="bg-green-600 hover:bg-green-700 text-white w-[30px] 
                                 flex items-center justify-center  h-[30px] p-1 text-lg
-                                 rounded">+</button>
+                                 rounded" @click="changeCount(item?.product?.id,item?.count,'increase')">+</button>
                                  <span class="p-3 text-lg">{{item?.count}}</span>
 
                                  <button class="bg-red-600 hover:bg-red-700 text-white w-[30px] 
                                 flex items-center justify-center  h-[30px] p-1 text-lg
-                                 rounded">-</button>
+                                 rounded"  @click="changeCount(item?.product?.id,item?.count,'decrease')">-</button>
                                  
                                  
                                  </div>
@@ -35,13 +34,47 @@
                             
                             </div>
                     </div>
-                </div></div>
+                </div>
 </template>
 
 <script setup>
 const {
     public: { showImageBaseUrl },
 } = useRuntimeConfig();
-const cartStore = useCart()
+const cartStore =  useCart()
+const baskeId = useCookie('baskeId')
+const cart=ref()
+const changeCount = async(id,count,label)=>{
+    console.log(id,count,label);
+if(label=='increase'){
+    cart.value = await cartStore?.cartFunction({
+      "cartUpdateType": cartStore.cartStatus.add.id,
+      "productId": id,
+      "uniqueId": baskeId.value,
+      "count":count+1
+    })
+}else{
+    cart.value = await  cartStore?.cartFunction({
+      "cartUpdateType": cartStore.cartStatus.add.id,
+      "productId": id,
+      "uniqueId": baskeId.value,
+      "count":count-1
+    })
+}
+
+console.log(cart.value);
+
+cart.value = await cartStore?.getCartCount({
+      "cartUpdateType": cartStore.cartStatus.getCart.id,
+      "uniqueId": baskeId.value,
+  })
+    
+
+}
+
+
+const remove = ()=>{
+    
+}
 
 </script>

@@ -1,18 +1,17 @@
 <template>
   <section>
+    <GlobalBreedCrumb
+      :data="[
+        {
+          name: 'تماس با ما',
+          url: ``,
+        },
+      ]"
+    />
     <div class="container p-2">
-      <h1>با در ارتباط باشید</h1>
+      <h1>با {{ detailStore?.baseDetail?.data?.name }} در ارتباط باشید</h1>
       <p class="text-justify">
-        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان
-        گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و
-        برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای
-        کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان
-        جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه
-        ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می
-        توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان
-        رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل
-        دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
-      </p>
+        {{ detailStore?.baseDetail?.data?.summary }}</p>
       <div class="flex flex-wrap dark:text-black">
         <div class="w-full lg:w-1/3">
           <div class="contactBox flex rounded bg-gray-100 mt-2 items-center border p-2">
@@ -49,7 +48,7 @@
             </div>
             <div class="info ps-3">
               <strong>آدرس</strong>
-              <p>تهران - خیابان پیروزی - خیابا سوم پ 12</p>
+              <p>{{ detailStore?.baseDetail?.data?.addressValue }}</p>
             </div>
           </div>
 
@@ -79,7 +78,7 @@
             </div>
             <div class="info ps-3">
               <strong>شماره تماس </strong>
-              <p>021-88556632</p>
+              <p>{{ detailStore?.baseDetail?.data?.phone }}</p>
             </div>
           </div>
           <div class="contactBox flex rounded bg-gray-100 mt-2 items-center border p-2">
@@ -111,7 +110,7 @@
             </div>
             <div class="info ps-3">
               <strong>ایمیل</strong>
-              <p>info@tylivershop.com</p>
+              <p>{{ detailStore?.baseDetail?.data?.mobile }}</p>
             </div>
           </div>
           <div class="contactBox flex rounded bg-gray-100 mt-2 items-center border p-2">
@@ -148,7 +147,7 @@
             </div>
             <div class="info ps-3">
               <strong>موبایل</strong>
-              <p>09123220062</p>
+              <p>{{ detailStore?.baseDetail?.data?.mobile }}</p>
             </div>
           </div>
           <div class="contactBox flex rounded bg-gray-100 mt-2 items-center border p-2">
@@ -182,9 +181,12 @@
             </div>
           </div>
         </div>
-        <div class="w-full lg:w-1/3 p-2 bg-gray-200">
+        <div class="w-full lg:w-2/3 p-1 pt-2">
+        
          
-          <GlobalMap />
+          <GlobalMap v-if="detailStore?.baseDetail?.data?.location" :location="detailStore?.baseDetail?.data?.location" />
+         
+        
 
 
         </div>
@@ -193,4 +195,10 @@
   </section>
 </template>
 
-<script setup></script>
+<script setup>
+const detailStore = useDetails()
+
+onMounted(async () => {
+  await detailStore.getBaseDetails()
+})
+</script>

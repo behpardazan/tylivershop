@@ -55,7 +55,10 @@
         </ul>
         <ul class="p-2 w-1/2" >
           <li><strong>دسترسی سریع</strong></li>
-          <li v-for="item in 5">
+          <li >
+            <nuxt-link class="p-1 block" to="/map"> تعمیرکاران</nuxt-link>
+          </li>
+          <li v-for="item in 3">
             <nuxt-link class="p-1 block" to="#">عنوان لینک</nuxt-link>
           </li>
         </ul>

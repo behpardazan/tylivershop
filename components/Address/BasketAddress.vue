@@ -2668,7 +2668,27 @@ const addressData = ref({
 onMounted(async () => {
   await addressStore.getAddress()
 
-  getCurrentAddress()
+
+   let counter = 0;
+
+const intervalId = setInterval(async() => {
+  // انجام عملیات مورد نظر در اینجا
+  console.log('Interval callback');
+  await getCurrentAddress()
+  await cartStore?.getCartCount({
+      "cartUpdateType": cartStore.cartStatus.getCart.id,
+
+  })
+  // افزایش شمارنده
+  counter++;
+
+  // بررسی برای متوقف کردن setInterval پس از 5 بار فراخوانی
+  if (counter === 5) {
+    clearInterval(intervalId); // متوقف کردن setInterval
+    console.log('Interval stopped after 5 calls');
+  }
+}, 1000); // هر 1000 میلی‌ثانیه (یک ثانیه) یک بار فراخوانی می‌شود
+
 })
 
 const setBasketAddress = (id)=>{

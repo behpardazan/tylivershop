@@ -11,7 +11,7 @@
         url: ``,
       },
     ]" />
-        <div class="container p-1">
+        <div class="container p-1 pb-10">
             <div class="flex flex-wrap">
                 <AddressBasketAddress />
             <div class="shiping text-sm p-1 w-full lg:w-1/3">
@@ -151,13 +151,13 @@ class="alert bg-red-300 p-1 my-2 rounded border border-red-700 text-red-700">
         })
 
     }
-
-    const setOrder = ()=>{
+const order = ref()
+    const setOrder =async ()=>{
         if(acceptRule.value){
-        cartStore.getCartCount({
+            order.value = await cartStore.getCartCount({
             cartUpdateType:cartStore.cartStatus.setOrder.id,
-
         })
+        
     }else{
         showRuleAlarm.value = true
     }

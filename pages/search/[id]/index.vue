@@ -12,7 +12,7 @@
       ]"
     />
     <div class="container p-2">
-      <h1>{{ data?.data?.name }}</h1>
+      <h1 class=" dark:text-black">{{ data?.data?.name }}</h1>
       
       <div class="flex">
         <div class="lg:w-1/4 hidden lg:block p-2 dark:text-black">
@@ -150,7 +150,7 @@
     
 
     </div>
-    <div class="bg-gray-200 py-3">
+    <div class="bg-gray-200 py-3 dark:text-black">
       <div class="p-2 container p-1" v-html="data?.data?.description"></div>
     </div>
     <USlideover v-model="isOpen" prevent-close>
